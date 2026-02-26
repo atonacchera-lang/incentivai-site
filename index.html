@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IncentivAI — Scopri cosa puoi fare con la tua impresa</title>
+<meta name="description" content="Descrivi la tua impresa. Ti diciamo quali bandi pubblici puoi sfruttare e cosa potresti fare che non hai ancora considerato. Gratis, senza impegno.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0E1B3D;--navy-mid:#162348;--navy-light:#1E3060;--navy-card:#131F45;
+  --gold:#C9922A;--gold-light:#E8B44A;--gold-pale:#F5D98A;
+  --green:#2ECC8A;--green-dim:rgba(46,204,138,.12);
+  --white:#FAFAF7;--gray:#8A9AAF;--gray-dim:rgba(138,154,175,.5);
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+  --expo:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--navy);color:var(--white);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:1000}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:linear-gradient(to bottom,rgba(14,27,61,.95) 0%,transparent 100%);transition:all .4s}
+nav.scrolled{padding:14px 48px;background:rgba(14,27,61,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,146,42,.12)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-pale) 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;color:var(--navy)}
+.logo-text{font-size:17px;font-weight:600;color:var(--white);letter-spacing:-.3px}
+.logo-text span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-link{font-size:14px;color:var(--gray);text-decoration:none;transition:color .2s}
+.nav-link:hover{color:var(--white)}
+.btn-nav{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.35);color:var(--gold-light);padding:8px 20px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;font-family:var(--sans)}
+.btn-nav:hover{background:rgba(201,146,42,.25);border-color:rgba(201,146,42,.6)}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 48px 80px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;width:900px;height:900px;background:radial-gradient(ellipse,rgba(201,146,42,.08) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.04) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 80% at center,black 30%,transparent 100%);pointer-events:none}
+.hero-content{max-width:840px;text-align:center;position:relative;z-index:2}
+
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,146,42,.1);border:1px solid rgba(201,146,42,.25);border-radius:100px;padding:6px 16px;margin-bottom:36px;opacity:0;transform:translateY(16px);animation:fadeUp .7s var(--expo) .1s forwards}
+.eyebrow-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.hero-eyebrow span{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--gold-light);letter-spacing:.05em;text-transform:uppercase}
+
+h1.hero-headline{font-family:var(--serif);font-size:clamp(42px,6.5vw,76px);font-weight:400;line-height:1.08;letter-spacing:-1.5px;color:var(--white);margin-bottom:28px;opacity:0;transform:translateY(20px);animation:fadeUp .8s var(--expo) .2s forwards}
+h1.hero-headline em{font-style:italic;color:var(--gold-light)}
+
+.hero-sub{font-size:18px;font-weight:300;line-height:1.7;color:rgba(202,214,230,.75);max-width:600px;margin:0 auto 52px;opacity:0;transform:translateY(20px);animation:fadeUp .8s var(--expo) .35s forwards}
+
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+
+/* ── WHITELIST BOX ── */
+.waitlist-box{background:rgba(255,255,255,.04);border:1px solid rgba(201,146,42,.2);border-radius:16px;padding:36px 40px;max-width:520px;margin:0 auto 36px;opacity:0;transform:translateY(24px);animation:fadeUp .9s var(--expo) .5s forwards;backdrop-filter:blur(12px)}
+.wl-label{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.wl-offer{font-size:20px;font-weight:500;color:var(--white);margin-bottom:6px;line-height:1.3}
+.wl-offer span{color:var(--gold-light)}
+.wl-sub{font-size:14px;color:var(--gray);margin-bottom:24px;line-height:1.5}
+.form-row{display:flex;gap:8px}
+.form-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:13px 16px;font-size:14px;color:var(--white);font-family:var(--sans);outline:none;transition:all .2s}
+.form-input::placeholder{color:rgba(138,154,175,.6)}
+.form-input:focus{border-color:rgba(201,146,42,.5);background:rgba(255,255,255,.08);box-shadow:0 0 0 3px rgba(201,146,42,.1)}
+.btn-primary{background:linear-gradient(135deg,var(--gold) 0%,#B8811E 100%);color:var(--navy);border:none;border-radius:8px;padding:13px 24px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans);white-space:nowrap;transition:all .2s}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,146,42,.35)}
+.btn-primary:active{transform:translateY(0)}
+.wl-note{font-size:12px;color:var(--gray);margin-top:12px;text-align:center}
+.wl-perks{display:flex;justify-content:center;gap:20px;margin-bottom:20px;flex-wrap:wrap}
+.wl-perk{display:flex;align-items:center;gap:6px;font-size:13px;color:rgba(202,214,230,.65)}
+.wl-perk-icon{color:var(--green);font-size:13px}
+.form-success{display:none;text-align:center;padding:20px 0}
+.form-success.show{display:block}
+.form-row.hide,.wl-perks.hide{display:none}
+.success-icon{width:48px;height:48px;background:rgba(46,204,138,.15);border:1px solid rgba(46,204,138,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:20px}
+.success-title{font-size:18px;font-weight:600;color:var(--white);margin-bottom:8px}
+.success-sub{font-size:14px;color:var(--gray);line-height:1.5}
+
+.hero-proof{display:flex;align-items:center;justify-content:center;gap:32px;opacity:0;animation:fadeUp .8s var(--expo) .7s forwards;flex-wrap:wrap}
+.proof-item{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(138,154,175,.7)}
+.proof-icon{color:var(--gold)}
+
+/* ── STATS ── */
+.stats-strip{background:rgba(201,146,42,.06);border-top:1px solid rgba(201,146,42,.12);border-bottom:1px solid rgba(201,146,42,.12);padding:32px 48px}
+.stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat-value{font-family:var(--serif);font-size:40px;color:var(--gold-light);line-height:1;margin-bottom:6px}
+.stat-label{font-size:13px;color:var(--gray);line-height:1.4}
+
+/* ── SECTIONS ── */
+.section{padding:100px 48px;max-width:1100px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.section-title{font-family:var(--serif);font-size:clamp(32px,4vw,48px);font-weight:400;color:var(--white);line-height:1.15;letter-spacing:-.8px;margin-bottom:16px}
+.section-title em{font-style:italic;color:var(--gold-light)}
+.section-sub{font-size:16px;color:var(--gray);line-height:1.6;max-width:520px;margin-bottom:64px}
+
+/* ── TWO-MODE SECTION ── */
+.two-mode{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:64px}
+.mode-card{border-radius:14px;padding:40px;position:relative;overflow:hidden;cursor:default;transition:transform .25s var(--expo)}
+.mode-card:hover{transform:translateY(-3px)}
+.mode-card.mode-a{background:linear-gradient(145deg,rgba(46,204,138,.08) 0%,var(--navy-mid) 60%);border:1px solid rgba(46,204,138,.2)}
+.mode-card.mode-b{background:linear-gradient(145deg,rgba(201,146,42,.08) 0%,var(--navy-mid) 60%);border:1px solid rgba(201,146,42,.2)}
+.mode-icon{font-size:32px;margin-bottom:20px}
+.mode-tag{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:100px;display:inline-block;margin-bottom:16px}
+.mode-tag-a{background:rgba(46,204,138,.1);color:var(--green);border:1px solid rgba(46,204,138,.2)}
+.mode-tag-b{background:rgba(201,146,42,.1);color:var(--gold-light);border:1px solid rgba(201,146,42,.2)}
+.mode-title{font-size:20px;font-weight:600;color:var(--white);margin-bottom:12px;line-height:1.3}
+.mode-desc{font-size:14px;color:var(--gray);line-height:1.65;margin-bottom:20px}
+.mode-examples{display:flex;flex-direction:column;gap:8px}
+.mode-example{font-size:13px;color:rgba(202,214,230,.6);display:flex;align-items:flex-start;gap:8px;line-height:1.4}
+.mode-example-icon{flex-shrink:0;margin-top:1px}
+
+/* ── STEPS ── */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:rgba(201,146,42,.08);border-radius:16px;overflow:hidden;border:1px solid rgba(201,146,42,.15)}
+.step-card{background:var(--navy-mid);padding:40px 36px;transition:background .3s}
+.step-card:hover{background:var(--navy-light)}
+.step-number{font-family:var(--mono);font-size:11px;color:rgba(201,146,42,.4);letter-spacing:.1em;margin-bottom:20px}
+.step-icon{width:44px;height:44px;background:rgba(201,146,42,.1);border:1px solid rgba(201,146,42,.2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:20px}
+.step-title{font-size:18px;font-weight:600;color:var(--white);margin-bottom:12px;line-height:1.3}
+.step-desc{font-size:14px;color:var(--gray);line-height:1.65}
+.step-time{display:inline-flex;align-items:center;gap:5px;margin-top:20px;font-family:var(--mono);font-size:11px;color:var(--gold);background:rgba(201,146,42,.08);border-radius:100px;padding:4px 10px}
+
+/* ── GUIDA DOMANDA ── */
+.guida-section{padding:100px 48px;border-top:1px solid rgba(201,146,42,.1);background:linear-gradient(180deg,rgba(201,146,42,.04) 0%,transparent 100%)}
+.guida-inner{max-width:1100px;margin:0 auto}
+.guida-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.guida-steps{display:flex;flex-direction:column;gap:0}
+.guida-step{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.guida-step:last-child{border-bottom:none}
+.guida-step-num{width:32px;height:32px;border-radius:50%;background:rgba(201,146,42,.12);border:1px solid rgba(201,146,42,.25);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--gold);flex-shrink:0;margin-top:2px}
+.guida-step-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:5px}
+.guida-step-desc{font-size:13px;color:var(--gray);line-height:1.55}
+.guida-step-tag{display:inline-block;margin-top:7px;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:3px;letter-spacing:.04em}
+.tag-auto{background:rgba(46,204,138,.1);color:#4ECBA4;border:1px solid rgba(46,204,138,.2)}
+.tag-tu{background:rgba(201,146,42,.1);color:var(--gold-light);border:1px solid rgba(201,146,42,.2)}
+.guida-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:32px;margin-bottom:16px}
+.guida-card-icon{font-size:26px;margin-bottom:14px}
+.guida-card-title{font-size:16px;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.3}
+.guida-card-desc{font-size:13px;color:var(--gray);line-height:1.6}
+.guida-honest{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:20px;margin-top:16px}
+.guida-honest-title{font-size:11px;font-weight:600;color:rgba(202,214,230,.4);margin-bottom:8px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.guida-honest-text{font-size:12px;color:rgba(138,154,175,.55);line-height:1.65}
+@media(max-width:900px){.guida-grid{grid-template-columns:1fr}}
+/* ── REPORT EXAMPLES ── */
+.report-section{padding:100px 48px;background:rgba(255,255,255,.015);border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05)}
+.report-inner{max-width:1100px;margin:0 auto}
+
+.report-tabs{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+.report-tab{font-family:var(--mono);font-size:12px;font-weight:500;padding:8px 16px;border-radius:6px;cursor:pointer;border:1px solid rgba(255,255,255,.08);background:transparent;color:var(--gray);font-family:var(--sans);font-size:13px;transition:all .2s}
+.report-tab:hover{border-color:rgba(201,146,42,.25);color:var(--white)}
+.report-tab.active{background:rgba(201,146,42,.12);border-color:rgba(201,146,42,.3);color:var(--gold-light)}
+
+.report-preview{display:none;animation:fadeIn .3s ease}
+.report-preview.active{display:grid;grid-template-columns:1fr 1.4fr;gap:24px}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Company profile card */
+.profile-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:28px}
+.profile-header{margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.06)}
+.profile-tag{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.profile-company{font-size:17px;font-weight:600;color:var(--white);margin-bottom:4px}
+.profile-desc{font-size:13px;color:var(--gray)}
+.profile-meta{display:flex;flex-direction:column;gap:10px}
+.profile-row{display:flex;align-items:center;justify-content:space-between}
+.profile-key{font-size:12px;color:var(--gray)}
+.profile-val{font-size:12px;font-weight:500;color:rgba(202,214,230,.8);font-family:var(--mono)}
+
+/* Report result card */
+.result-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:28px}
+.result-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,.06)}
+.result-title{font-size:15px;font-weight:600;color:var(--white)}
+.result-label{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.bando-rows{display:flex;flex-direction:column;gap:12px;margin-bottom:20px}
+.bando-row{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:16px}
+.bando-row-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.bando-row-name{font-size:14px;font-weight:600;color:var(--white)}
+.score-pill{display:flex;align-items:center;gap:6px}
+.score-bar-wrap{width:60px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.score-bar{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+.score-pct{font-family:var(--mono);font-size:11px;color:var(--gold-light);font-weight:500}
+.bando-row-why{font-size:12px;color:var(--gray);line-height:1.5;margin-bottom:8px}
+.bando-row-amount{font-size:11px;font-weight:600;color:var(--green);font-family:var(--mono)}
+/* Advisory suggestions */
+.suggestions{background:linear-gradient(135deg,rgba(201,146,42,.06) 0%,transparent 100%);border:1px solid rgba(201,146,42,.15);border-radius:8px;padding:16px}
+.suggestions-title{font-size:12px;font-weight:600;color:var(--gold);margin-bottom:12px}
+.suggestion-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:12px;color:rgba(202,214,230,.7);line-height:1.45}
+.suggestion-arrow{color:var(--gold-light);flex-shrink:0;font-size:11px;margin-top:2px}
+
+/* ── BANDI PREVIEW ── */
+.bandi-section{padding:100px 48px}
+.bandi-inner{max-width:1100px;margin:0 auto}
+.bandi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.bando-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:28px;transition:all .25s var(--expo);position:relative;overflow:hidden}
+.bando-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-pale));transform:scaleX(0);transform-origin:left;transition:transform .3s var(--expo)}
+.bando-card:hover{border-color:rgba(201,146,42,.2);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.bando-card:hover::before{transform:scaleX(1)}
+.bando-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
+.bando-badge{font-family:var(--mono);font-size:10px;font-weight:500;padding:4px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.06em}
+.badge-open{background:rgba(46,204,138,.12);color:#4ECBA4;border:1px solid rgba(46,204,138,.2)}
+.badge-hot{background:rgba(201,146,42,.12);color:var(--gold-light);border:1px solid rgba(201,146,42,.2)}
+.score-ring{position:relative;width:44px;height:44px}
+.score-ring svg{transform:rotate(-90deg);width:44px;height:44px}
+.score-ring circle{fill:none;stroke-width:3}
+.score-ring .bg{stroke:rgba(255,255,255,.06)}
+.score-ring .fill{stroke:var(--gold);stroke-linecap:round}
+.score-text{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--gold-light)}
+.bando-name{font-size:16px;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.3}
+.bando-desc{font-size:13px;color:var(--gray);line-height:1.5;margin-bottom:20px}
+.bando-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.bando-tag{font-size:11px;color:rgba(138,154,175,.6);background:rgba(255,255,255,.04);border-radius:4px;padding:3px 8px;font-family:var(--mono)}
+.bando-amount{font-size:12px;font-weight:600;color:var(--gold);margin-left:auto}
+.bando-card.blurred::after{content:'';position:absolute;inset:0;backdrop-filter:blur(6px);background:rgba(14,27,61,.6);border-radius:12px}
+.bando-unlock{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+.bando-unlock-icon{font-size:24px}
+.bando-unlock-text{font-size:13px;font-weight:500;color:var(--gold-light);text-align:center;line-height:1.4}
+
+/* ── PRICING ── */
+.pricing-section{padding:100px 48px;max-width:1100px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:900px;margin:0 auto}
+.price-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:36px 32px;position:relative}
+.price-card.featured{border-color:rgba(201,146,42,.35);background:linear-gradient(160deg,rgba(201,146,42,.07) 0%,var(--navy-mid) 50%)}
+.price-featured-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),#B8811E);color:var(--navy);font-size:11px;font-weight:700;padding:4px 14px;border-radius:100px;font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.price-plan{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.price-value{font-family:var(--serif);font-size:44px;color:var(--white);line-height:1;margin-bottom:4px}
+.price-value sup{font-family:var(--sans);font-size:20px;font-weight:300;vertical-align:super;margin-right:2px}
+.price-period{font-size:13px;color:var(--gray);margin-bottom:24px}
+.price-divider{height:1px;background:rgba(255,255,255,.06);margin-bottom:24px}
+.price-features{list-style:none;margin-bottom:28px}
+.price-features li{font-size:14px;color:rgba(202,214,230,.7);padding:6px 0;display:flex;align-items:center;gap:10px}
+.price-features li::before{content:'✓';color:var(--gold);font-weight:600;font-size:12px;flex-shrink:0}
+.price-features li.no{color:rgba(138,154,175,.35)}
+.price-features li.no::before{content:'—';color:rgba(138,154,175,.25)}
+.btn-price{display:block;width:100%;padding:13px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans);transition:all .2s;text-align:center;text-decoration:none;border:none}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.7)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.25);color:var(--white)}
+.btn-gold{background:linear-gradient(135deg,var(--gold) 0%,#B8811E 100%);color:var(--navy)}
+.btn-gold:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,146,42,.35)}
+
+/* ── FAQ ── */
+.faq-section{padding:80px 48px;max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.06);padding:24px 0;cursor:pointer}
+.faq-question{display:flex;align-items:center;justify-content:space-between;font-size:16px;font-weight:500;color:var(--white);gap:16px;user-select:none}
+.faq-arrow{color:var(--gold);font-size:12px;transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+.faq-answer{font-size:14px;color:var(--gray);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .4s,padding-top .3s}
+.faq-item.open .faq-answer{max-height:300px;padding-top:16px}
+
+/* ── FINAL CTA ── */
+.cta-section{padding:100px 48px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at center,rgba(201,146,42,.07) 0%,transparent 70%);pointer-events:none}
+.cta-title{font-family:var(--serif);font-size:clamp(36px,5vw,60px);font-weight:400;color:var(--white);line-height:1.12;letter-spacing:-1px;margin-bottom:20px}
+.cta-title em{font-style:italic;color:var(--gold-light)}
+.cta-sub{font-size:16px;color:var(--gray);margin-bottom:48px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6}
+.cta-form{display:flex;gap:8px;max-width:420px;margin:0 auto 20px}
+
+/* ── FOOTER ── */
+footer{padding:36px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-copy{font-size:13px;color:rgba(138,154,175,.4)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:rgba(138,154,175,.4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gray)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--expo),transform .7s var(--expo)}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .two-mode{grid-template-columns:1fr}
+  .report-preview.active{grid-template-columns:1fr}
+  .bandi-grid,.pricing-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  nav,nav.scrolled{padding:16px 24px}
+  .nav-links .nav-link{display:none}
+  .hero{padding:100px 24px 64px}
+  .waitlist-box{padding:28px 24px}
+  .form-row,.cta-form{flex-direction:column}
+  .stats-strip{padding:24px}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .section,.faq-section,.pricing-section,.cta-section,.bandi-section,.report-section{padding:64px 24px}
+  footer{padding:28px 24px;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="logo" href="#">
+    <div class="logo-mark">I</div>
+    <span class="logo-text">Incentiv<span>AI</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="#come-funziona" class="nav-link">Come funziona</a>
+    <a href="#esempi" class="nav-link">Esempi</a>
+    <a href="#prezzi" class="nav-link">Prezzi</a>
+    <a href="#whitelist" class="btn-nav">Accesso anticipato →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+
+    <div class="hero-eyebrow">
+      <div class="eyebrow-dot"></div>
+      <span>Accesso anticipato gratuito — lista aperta</span>
+    </div>
+
+    <h1 class="hero-headline">
+      Scopri in 3 minuti<br>
+      <em>quali bandi pubblici</em><br>
+      fanno al caso tuo.
+    </h1>
+
+    <p class="hero-sub">
+      Incrociamo il profilo della tua PMI con 30+ bandi pubblici attivi. Se hai un investimento in mente, ti diciamo se ci sono fondi. Se non hai nulla in mente, ti suggeriremo noi le opportunità — concrete, fattibili, calibrate sulla tua impresa.
+    </p>
+
+    <!-- WHITELIST BOX -->
+    <div class="waitlist-box" id="whitelist">
+      <div class="wl-label">Accesso anticipato</div>
+      <div class="wl-offer">Entra gratis. <span>Nessuna carta di credito.</span></div>
+      <div class="wl-sub">Stai costruendo la lista di accesso anticipato. I primi iscritti ricevono l'analisi completa gratis e influenzano lo sviluppo del prodotto.</div>
+
+      <div class="wl-perks" id="wlPerks">
+        <div class="wl-perk"><span class="wl-perk-icon">✓</span><span>Analisi completa gratuita</span></div>
+        <div class="wl-perk"><span class="wl-perk-icon">✓</span><span>Nessun impegno</span></div>
+        <div class="wl-perk"><span class="wl-perk-icon">✓</span><span>Report PDF incluso</span></div>
+      </div>
+
+      <div class="form-row" id="formRow">
+        <input class="form-input" type="email" placeholder="tua@email.it" id="emailInput">
+        <button class="btn-primary" onclick="handleSubmit('emailInput','formRow','formSuccess','wlPerks')">Voglio accedere →</button>
+      </div>
+
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon">✓</div>
+        <div class="success-title">Sei dentro!</div>
+        <div class="success-sub">Ti contatto personalmente entro 48 ore per iniziare l'analisi della tua impresa.</div>
+      </div>
+
+      <div class="wl-note">Zero spam. <a href="#">Privacy policy</a>. Disiscrizione in un click.</div>
+    </div>
+
+    <div class="hero-proof">
+      <div class="proof-item"><span class="proof-icon">✓</span><span>30+ bandi verificati</span></div>
+      <div class="proof-item"><span class="proof-icon">✓</span><span>Aggiornati ogni settimana</span></div>
+      <div class="proof-item"><span class="proof-icon">✓</span><span>Nessun commercialista richiesto</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="reveal"><div class="stat-value">€50B</div><div class="stat-label">di incentivi pubblici disponibili<br>ogni anno in Italia</div></div>
+    <div class="reveal d1"><div class="stat-value">60%</div><div class="stat-label">delle PMI non accede<br>per mancanza di informazioni</div></div>
+    <div class="reveal d2"><div class="stat-value">30+</div><div class="stat-label">bandi attivi nel database,<br>aggiornati settimanalmente</div></div>
+    <div class="reveal d3"><div class="stat-value">3 min</div><div class="stat-label">per descrivere la tua impresa<br>e ricevere l'analisi completa</div></div>
+  </div>
+</div>
+
+<!-- DUE MODI -->
+<div id="come-funziona">
+  <div class="section">
+    <div class="reveal">
+      <div class="section-label">// Funziona in due modi</div>
+      <h2 class="section-title">Hai un investimento in mente?<br><em>O non sai da dove partire?</em></h2>
+      <p class="section-sub">Non importa da dove parti. In entrambi i casi ti diamo risposte concrete.</p>
+    </div>
+
+    <div class="two-mode reveal">
+      <div class="mode-card mode-a">
+        <div class="mode-icon">🎯</div>
+        <div class="mode-tag mode-tag-a">Ho già un'idea</div>
+        <div class="mode-title">So cosa voglio fare — esiste un bando?</div>
+        <div class="mode-desc">Stai pianificando un investimento specifico. Noi incrociamo il tuo piano con tutti i bandi attivi e ti diciamo qual è il contributo massimo che puoi ottenere.</div>
+        <div class="mode-examples">
+          <div class="mode-example"><span class="mode-example-icon">→</span><span>"Voglio comprare un macchinario da €150K — c'è qualcosa che copre parte del costo?"</span></div>
+          <div class="mode-example"><span class="mode-example-icon">→</span><span>"Sto assumendo 3 persone — esistono incentivi per le nuove assunzioni?"</span></div>
+          <div class="mode-example"><span class="mode-example-icon">→</span><span>"Voglio digitalizzare il magazzino — ci sono fondi PNRR disponibili per me?"</span></div>
+        </div>
+      </div>
+
+      <div class="mode-card mode-b">
+        <div class="mode-icon">💡</div>
+        <div class="mode-tag mode-tag-b">Non so da dove partire</div>
+        <div class="mode-title">Dimmi tu cosa posso fare con la mia impresa</div>
+        <div class="mode-desc">Non hai nessun investimento specifico in mente — vuoi solo capire se ci sono opportunità che stai perdendo. Descrivi la tua attività e ti suggeriamo noi cosa vale la pena considerare.</div>
+        <div class="mode-examples">
+          <div class="mode-example"><span class="mode-example-icon">→</span><span>"Hai 12 dipendenti e sei nel manifatturiero: perché non investi in automazione? C'è un bando che copre fino al 50%."</span></div>
+          <div class="mode-example"><span class="mode-example-icon">→</span><span>"Sei in Campania e hai meno di 10 anni: il fondo perduto per imprese giovani al Sud è quasi inesplorato nel tuo settore."</span></div>
+          <div class="mode-example"><span class="mode-example-icon">→</span><span>"Il tuo codice ATECO rientra nei settori prioritari del PNRR — stai lasciando €80K sul tavolo."</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 STEPS -->
+    <div class="steps reveal">
+      <div class="step-card">
+        <div class="step-number">01 / 03</div>
+        <div class="step-icon">📋</div>
+        <div class="step-title">Descrivi la tua impresa</div>
+        <div class="step-desc">Settore, regione, dimensione, investimenti pianificati — o nessun investimento specifico. 23 domande guidate, nessun tecnicismo.</div>
+        <div class="step-time">⏱ ~3 minuti</div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02 / 03</div>
+        <div class="step-icon">🔍</div>
+        <div class="step-title">Riceviamo i bandi compatibili + suggerimenti</div>
+        <div class="step-desc">Il sistema incrocia 23 variabili con i requisiti di ogni bando. Se non hai investimenti in mente, ti propone opportunità concrete con spiegazione del perché.</div>
+        <div class="step-time">⚡ Istantaneo</div>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03 / 03</div>
+        <div class="step-icon">📄</div>
+        <div class="step-title">Scarica il report PDF</div>
+        <div class="step-desc">Bandi compatibili con score, importi, scadenze. E per ogni bando che vuoi esplorare: guida step-by-step per la domanda, documenti, portale, errori da evitare.</div>
+        <div class="step-time">📬 Via email</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ESEMPI REPORT -->
+<div class="report-section" id="esempi">
+  <div class="report-inner">
+    <div class="reveal" style="margin-bottom:48px">
+      <div class="section-label">// Esempi reali</div>
+      <h2 class="section-title">Cosa riceveresti.<br><em>Tre casi concreti.</em></h2>
+      <p class="section-sub">Clicca su ogni profilo per vedere l'analisi che avrebbe ricevuto quella impresa.</p>
+    </div>
+
+    <div class="report-tabs reveal">
+      <button class="report-tab active" onclick="showReport('r1',this)">🏭 Metalmeccanica, Brescia</button>
+      <button class="report-tab" onclick="showReport('r2',this)">🛍️ Commercio, Napoli</button>
+      <button class="report-tab" onclick="showReport('r3',this)">💻 Software, Milano</button>
+    </div>
+
+    <!-- REPORT 1: Metalmeccanica Brescia -->
+    <div id="r1" class="report-preview active reveal">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-tag">Profilo impresa</div>
+          <div class="profile-company">Officine Torneria Srl</div>
+          <div class="profile-desc">Produzione componenti meccanici di precisione</div>
+        </div>
+        <div class="profile-meta">
+          <div class="profile-row"><span class="profile-key">Settore</span><span class="profile-val">Metalmeccanica</span></div>
+          <div class="profile-row"><span class="profile-key">Regione</span><span class="profile-val">Lombardia</span></div>
+          <div class="profile-row"><span class="profile-key">Dipendenti</span><span class="profile-val">18</span></div>
+          <div class="profile-row"><span class="profile-key">Fatturato</span><span class="profile-val">€2.4M/anno</span></div>
+          <div class="profile-row"><span class="profile-key">Anni di attività</span><span class="profile-val">14 anni</span></div>
+          <div class="profile-row"><span class="profile-key">Investimento pianificato</span><span class="profile-val">Nessuno specifico</span></div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-header">
+          <div><div class="result-label">Analisi IncentivAI</div><div class="result-title">4 bandi compatibili trovati</div></div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--gold)">Score max: 94%</div>
+        </div>
+        <div class="bando-rows">
+          <div class="bando-row">
+            <div class="bando-row-head">
+              <span class="bando-name" style="font-size:13px">Nuova Sabatini</span>
+              <div class="score-pill"><div class="score-bar-wrap"><div class="score-bar" style="width:94%"></div></div><span class="score-pct">94%</span></div>
+            </div>
+            <div class="bando-row-why">Impresa manifatturiera con fatturato nella soglia PMI, sede in Lombardia. Compatibile con acquisto macchinari CNC, tornio automatico, impianti di lavorazione.</div>
+            <div class="bando-row-amount">fino a €4.000.000 — contributo interessi 2.75%/anno</div>
+          </div>
+          <div class="bando-row">
+            <div class="bando-row-head">
+              <span class="bando-name" style="font-size:13px">Transizione 5.0 — Credito imposta</span>
+              <div class="score-pill"><div class="score-bar-wrap"><div class="score-bar" style="width:81%"></div></div><span class="score-pct">81%</span></div>
+            </div>
+            <div class="bando-row-why">Il tuo settore è tra i prioritari del PNRR. Se investi in automazione o controllo digitale dei macchinari, puoi accedere a un credito d'imposta cumulabile con Sabatini.</div>
+            <div class="bando-row-amount">fino a 45% di credito d'imposta sull'investimento</div>
+          </div>
+        </div>
+        <div class="suggestions">
+          <div class="suggestions-title">💡 Opportunità che potresti non aver considerato</div>
+          <div class="suggestion-item"><span class="suggestion-arrow">→</span><span>Hai 18 dipendenti: se assumessi 2 persone under 36, potresti accedere all'esonero contributivo del 100% per 36 mesi. Costo aggiuntivo netto stimato: quasi zero.</span></div>
+          <div class="suggestion-item"><span class="suggestion-arrow">→</span><span>Il tuo ATECO rientra nel "Made in Italy manifatturiero": esiste un bando regionale lombardo per certificazioni di qualità (ISO, CE) con contributo a fondo perduto fino a €30K.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REPORT 2: Commercio Napoli -->
+    <div id="r2" class="report-preview">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-tag">Profilo impresa</div>
+          <div class="profile-company">Moda Sud Snc</div>
+          <div class="profile-desc">Abbigliamento e accessori, negozio fisico + e-commerce</div>
+        </div>
+        <div class="profile-meta">
+          <div class="profile-row"><span class="profile-key">Settore</span><span class="profile-val">Commercio al dettaglio</span></div>
+          <div class="profile-row"><span class="profile-key">Regione</span><span class="profile-val">Campania</span></div>
+          <div class="profile-row"><span class="profile-key">Dipendenti</span><span class="profile-val">4</span></div>
+          <div class="profile-row"><span class="profile-key">Fatturato</span><span class="profile-val">€380K/anno</span></div>
+          <div class="profile-row"><span class="profile-key">Anni di attività</span><span class="profile-val">6 anni</span></div>
+          <div class="profile-row"><span class="profile-key">Investimento pianificato</span><span class="profile-val">Voglio potenziare l'e-commerce</span></div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-header">
+          <div><div class="result-label">Analisi IncentivAI</div><div class="result-title">5 bandi compatibili trovati</div></div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--gold)">Score max: 88%</div>
+        </div>
+        <div class="bando-rows">
+          <div class="bando-row">
+            <div class="bando-row-head">
+              <span class="bando-name" style="font-size:13px">Voucher Digitalizzazione PMI</span>
+              <div class="score-pill"><div class="score-bar-wrap"><div class="score-bar" style="width:88%"></div></div><span class="score-pct">88%</span></div>
+            </div>
+            <div class="bando-row-why">Micro-impresa del commercio con progetto di sviluppo e-commerce. Copre piattaforme digitali, sito web, strumenti di pagamento online, marketing digitale.</div>
+            <div class="bando-row-amount">fino a €10.000 a fondo perduto (50% dei costi ammessi)</div>
+          </div>
+          <div class="bando-row">
+            <div class="bando-row-head">
+              <span class="bando-name" style="font-size:13px">Resto al Sud — Campania</span>
+              <div class="score-pill"><div class="score-bar-wrap"><div class="score-bar" style="width:75%"></div></div><span class="score-pct">75%</span></div>
+            </div>
+            <div class="bando-row-why">Impresa al Sud con meno di 10 anni di attività. Contributo misto (fondo perduto + finanziamento agevolato) per investimenti in beni strumentali e marketing.</div>
+            <div class="bando-row-amount">fino a €200.000 (50% fondo perduto + 50% finanziamento 0%)</div>
+          </div>
+        </div>
+        <div class="suggestions">
+          <div class="suggestions-title">💡 Opportunità che potresti non aver considerato</div>
+          <div class="suggestion-item"><span class="suggestion-arrow">→</span><span>Sei in Campania e hai meno di 10 anni: "Resto al Sud" è tra i bandi meno sfruttati nel commercio. Molte imprese simili alla tua lo ignorano perché pensano sia solo per startup.</span></div>
+          <div class="suggestion-item"><span class="suggestion-arrow">→</span><span>Se sei titolare donna (o hai soci donne maggioritari), hai diritto alla maggiorazione del 20% su diversi bandi nazionali — incluso il Voucher Digitalizzazione.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REPORT 3: Software Milano -->
+    <div id="r3" class="report-preview">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-tag">Profilo impresa</div>
+          <div class="profile-company">DevStudio Srls</div>
+          <div class="profile-desc">Sviluppo software gestionale per PMI</div>
+        </div>
+        <div class="profile-meta">
+          <div class="profile-row"><span class="profile-key">Settore</span><span class="profile-val">Software & ICT</span></div>
+          <div class="profile-row"><span class="profile-key">Regione</span><span class="profile-val">Lombardia</span></div>
+          <div class="profile-row"><span class="profile-key">Dipendenti</span><span class="profile-val">7</span></div>
+          <div class="profile-row"><span class="profile-key">Fatturato</span><span class="profile-val">€620K/anno</span></div>
+          <div class="profile-row"><span class="profile-key">Anni di attività</span><span class="profile-val">3 anni</span></div>
+          <div class="profile-row"><span class="profile-key">Investimento pianificato</span><span class="profile-val">Assumere 2 sviluppatori</span></div>
+        </div>
+      </div>
+      <div class="result-card">
+        <div class="result-header">
+          <div><div class="result-label">Analisi IncentivAI</div><div class="result-title">6 bandi compatibili trovati</div></div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--gold)">Score max: 91%</div>
+        </div>
+        <div class="bando-rows">
+          <div class="bando-row">
+            <div class="bando-row-head">
+              <span class="bando-name" style="font-size:13px">Esonero contributivo under 36</span>
+              <div class="score-pill"><div class="score-bar-wrap"><div class="score-bar" style="width:91%"></div></div><span class="score-pct">91%</span></div>
+            </div>
+            <div class="bando-row-why">Per i 2 sviluppatori che vuoi assumere: se hanno meno di 36 anni (probabile nel settore tech), hai diritto all'esonero contributivo del 100% per i primi 36 mesi. Risparmio stimato: €18-24K per persona.</div>
+            <div class="bando-row-amount">fino a €6.000/anno per dipendente — esonero totale contributi</div>
+          </div>
+          <div class="bando-row">
+            <div class="bando-row-head">
+              <span class="bando-name" style="font-size:13px">Credito R&D — Ricerca e Sviluppo</span>
+              <div class="score-pill"><div class="score-bar-wrap"><div class="score-bar" style="width:79%"></div></div><span class="score-pct">79%</span></div>
+            </div>
+            <div class="bando-row-why">Lo sviluppo di software originale rientra nelle attività di R&D ammesse. Ogni ora dei tuoi sviluppatori su prodotti nuovi può generare un credito d'imposta del 10-20%.</div>
+            <div class="bando-row-amount">10-20% delle spese R&D come credito d'imposta</div>
+          </div>
+        </div>
+        <div class="suggestions">
+          <div class="suggestions-title">💡 Opportunità che potresti non aver considerato</div>
+          <div class="suggestion-item"><span class="suggestion-arrow">→</span><span>Hai 3 anni di attività e sei nel tech: SIMEST offre finanziamenti agevolati per l'internazionalizzazione. Se hai anche un solo cliente estero (o vuoi cercarlo), puoi accedere a fondi a tasso zero.</span></div>
+          <div class="suggestion-item"><span class="suggestion-arrow">→</span><span>Il tuo prodotto software potrebbe essere brevettabile o depositabile come opera dell'ingegno. Esistono bandi regionali per la protezione IP con contributo fino a €5K — quasi nessuna software house li conosce.</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- GUIDA DOMANDA BANDO -->
+<div class="guida-section">
+  <div class="guida-inner">
+    <div class="reveal" style="margin-bottom:64px">
+      <div class="section-label">// Dopo l'analisi</div>
+      <h2 class="section-title">Ti prepariamo tutto.<br><em>Tu firmi e invii.</em></h2>
+      <p class="section-sub">Per ogni bando compatibile che decidi di esplorare, ti mandiamo una guida passo per passo su misura — documenti, moduli, portale, scadenze, errori da evitare.</p>
+    </div>
+
+    <div class="guida-grid">
+      <div class="guida-left reveal">
+        <div class="guida-steps">
+          <div class="guida-step">
+            <div class="guida-step-num">01</div>
+            <div>
+              <div class="guida-step-title">Lista documenti personalizzata</div>
+              <div class="guida-step-desc">Visura camerale, bilanci, DURC, planimetrie, preventivi — ti diciamo esattamente cosa serve per quel bando, nella tua situazione specifica. Niente lista generica.</div>
+              <span class="guida-step-tag tag-auto">✓ Noi prepariamo</span>
+            </div>
+          </div>
+          <div class="guida-step">
+            <div class="guida-step-num">02</div>
+            <div>
+              <div class="guida-step-title">Guida alla compilazione del modulo</div>
+              <div class="guida-step-desc">Campo per campo, ti spieghiamo cosa inserire e perché. Evidenziamo le sezioni critiche dove le domande vengono respinte più spesso.</div>
+              <span class="guida-step-tag tag-auto">✓ Noi prepariamo</span>
+            </div>
+          </div>
+          <div class="guida-step">
+            <div class="guida-step-num">03</div>
+            <div>
+              <div class="guida-step-title">Portale di invio + istruzioni accesso</div>
+              <div class="guida-step-desc">Ti diciamo esattamente dove andare — link diretto al portale ufficiale, con le istruzioni per l'accesso tramite SPID o CIE.</div>
+              <span class="guida-step-tag tag-auto">✓ Noi prepariamo</span>
+            </div>
+          </div>
+          <div class="guida-step">
+            <div class="guida-step-num">04</div>
+            <div>
+              <div class="guida-step-title">Invio e firma digitale</div>
+              <div class="guida-step-desc">La trasmissione ufficiale avviene tramite SPID o firma digitale dell'imprenditore o di un delegato — questo passaggio lo fai tu o il tuo commercialista, ma arriverai preparato.</div>
+              <span class="guida-step-tag tag-tu">→ Tu o il tuo commercialista</span>
+            </div>
+          </div>
+          <div class="guida-step">
+            <div class="guida-step-num">05</div>
+            <div>
+              <div class="guida-step-title">Reminder scadenze e follow-up</div>
+              <div class="guida-step-desc">Ti avvisiamo 30 giorni prima della scadenza e ti ricordiamo cosa ancora manca. Nessun bando perso per dimenticanza.</div>
+              <span class="guida-step-tag tag-auto">✓ Noi gestiamo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guida-right reveal d1">
+        <div class="guida-card">
+          <div class="guida-card-icon">📦</div>
+          <div class="guida-card-title">Cosa ricevi per ogni bando che vuoi esplorare</div>
+          <div class="guida-card-desc">
+            Un pacchetto completo via email: lista documenti necessari, guida alla compilazione campo per campo, link al portale ufficiale, scadenze chiave, e i 5 errori più comuni che causano il rigetto della domanda.<br><br>
+            Non teoria — istruzioni operative concrete, calibrate sul tuo profilo e sul bando specifico.
+          </div>
+        </div>
+
+        <div class="guida-card">
+          <div class="guida-card-icon">⏱️</div>
+          <div class="guida-card-title">Quanto tempo ti fa risparmiare</div>
+          <div class="guida-card-desc">
+            Un commercialista specializzato in finanza agevolata chiede mediamente €500–2.000 solo per la fase di istruttoria e preparazione della domanda. Con IncentivAI arrivi alla stessa preparazione in autonomia — poi decidi se procedere da solo o con un professionista, ma con il lavoro pesante già fatto.
+          </div>
+        </div>
+
+        <div class="guida-honest">
+          <div class="guida-honest-title">Una cosa da sapere</div>
+          <div class="guida-honest-text">
+            I portali ufficiali (MiMIT, Invitalia, portali regionali) richiedono SPID o firma digitale per la trasmissione finale. Questo passaggio deve farlo l'imprenditore o un suo delegato — non possiamo farlo noi al posto tuo. Ma ti portiamo fino alla porta, pronti a entrare.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- BANDI PREVIEW -->
+<div class="bandi-section">
+  <div class="bandi-inner">
+    <div class="reveal" style="margin-bottom:64px">
+      <div class="section-label">// Bandi nel database</div>
+      <h2 class="section-title">30+ bandi attivi,<br><em>sempre aggiornati</em></h2>
+      <p class="section-sub">Ogni settimana verifichiamo scadenze e nuove aperture su MiMIT, Invitalia e portali regionali.</p>
+    </div>
+    <div class="bandi-grid">
+      <div class="bando-card reveal">
+        <div class="bando-header">
+          <span class="bando-badge badge-open">Aperto</span>
+          <div class="score-ring"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fill" cx="22" cy="22" r="18" stroke-dasharray="101 127"/></svg><div class="score-text">92%</div></div>
+        </div>
+        <div class="bando-name">Nuova Sabatini</div>
+        <div class="bando-desc">Finanziamento agevolato per macchinari, attrezzature e tecnologia. Il più utilizzato dalle PMI italiane — sportello sempre aperto.</div>
+        <div class="bando-meta"><span class="bando-tag">Nazionale</span><span class="bando-tag">Tutti i settori</span><span class="bando-amount">fino a €4M</span></div>
+      </div>
+      <div class="bando-card reveal d1">
+        <div class="bando-header">
+          <span class="bando-badge badge-hot">In scadenza</span>
+          <div class="score-ring"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fill" cx="22" cy="22" r="18" stroke-dasharray="85 127"/></svg><div class="score-text">78%</div></div>
+        </div>
+        <div class="bando-name">Transizione 5.0</div>
+        <div class="bando-desc">Credito d'imposta per investimenti in digitale e sostenibilità energetica. Cumulabile con Nuova Sabatini.</div>
+        <div class="bando-meta"><span class="bando-tag">PNRR</span><span class="bando-tag">Digitale</span><span class="bando-amount">fino a €50M</span></div>
+      </div>
+      <div class="bando-card blurred reveal d2">
+        <div class="bando-header">
+          <span class="bando-badge badge-open">Aperto</span>
+          <div class="score-ring"><svg viewBox="0 0 44 44"><circle class="bg" cx="22" cy="22" r="18"/><circle class="fill" cx="22" cy="22" r="18" stroke-dasharray="70 127"/></svg><div class="score-text">65%</div></div>
+        </div>
+        <div class="bando-name">Credito R&amp;D Lombardia</div>
+        <div class="bando-desc">Contributo per ricerca e sviluppo in imprese manifatturiere con meno di 50 dipendenti.</div>
+        <div class="bando-meta"><span class="bando-tag">Lombardia</span><span class="bando-tag">R&amp;D</span><span class="bando-amount">fino a €200K</span></div>
+        <div class="bando-unlock"><div class="bando-unlock-icon">🔒</div><div class="bando-unlock-text">+28 bandi visibili<br>dopo la registrazione</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div id="prezzi">
+  <div class="pricing-section">
+    <div class="reveal" style="text-align:center;margin-bottom:64px">
+      <div class="section-label" style="text-align:center">// Accesso</div>
+      <h2 class="section-title" style="text-align:center">Inizia gratis.<br><em>Paghi solo se vuoi di più.</em></h2>
+      <p style="font-size:15px;color:var(--gray);margin-top:12px">Adesso siamo in accesso anticipato — entra gratis, nessuna carta richiesta.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="price-card reveal">
+        <div class="price-plan">Accesso anticipato</div>
+        <div class="price-value"><sup>€</sup>0</div>
+        <div class="price-period">durante la beta</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Analisi completa del profilo</li>
+          <li>Top 3 bandi compatibili</li>
+          <li>Score di compatibilità</li>
+          <li>Suggerimenti opportunità</li>
+          <li class="no">Report PDF completo</li>
+          <li class="no">Tutti i bandi compatibili</li>
+        </ul>
+        <a href="#whitelist" class="btn-price btn-ghost">Iscriviti gratis</a>
+      </div>
+
+      <div class="price-card featured reveal d1">
+        <div class="price-featured-badge">AL LANCIO</div>
+        <div class="price-plan">Starter</div>
+        <div class="price-value"><sup>€</sup>29</div>
+        <div class="price-period">al mese — disponibile al lancio</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Top 10 bandi compatibili</li>
+          <li>Score e spiegazione dettagliata</li>
+          <li>Report PDF professionale</li>
+          <li>Suggerimenti opportunità</li>
+          <li>Guida domanda per ogni bando</li>
+          <li>Reminder scadenze via email</li>
+          <li class="no">What-If advisor</li>
+        </ul>
+        <a href="#whitelist" class="btn-price btn-gold">Prenota il posto →</a>
+      </div>
+
+      <div class="price-card reveal d2">
+        <div class="price-plan">Pro</div>
+        <div class="price-value"><sup>€</sup>79</div>
+        <div class="price-period">al mese — disponibile al lancio</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Tutti i bandi compatibili</li>
+          <li>Report PDF professionale</li>
+          <li>Suggerimenti opportunità avanzati</li>
+          <li>What-If advisor</li>
+          <li>Guida domanda completa per ogni bando</li>
+          <li>Simulazioni "e se assumessi…"</li>
+          <li>Supporto prioritario</li>
+        </ul>
+        <a href="#whitelist" class="btn-price btn-ghost">Prenota il posto →</a>
+      </div>
+
+    </div>
+    <div class="reveal" style="text-align:center;margin-top:32px">
+      <p style="font-size:13px;color:var(--gray)">Sei un commercialista? <a href="#whitelist" style="color:var(--gold-light);text-decoration:none">Piano Studio white-label da €149/mese →</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="reveal" style="margin-bottom:48px">
+    <div class="section-label">// Domande frequenti</div>
+    <h2 class="section-title">Hai dubbi?<br><em>Rispondiamo qui.</em></h2>
+  </div>
+
+  <div class="faq-item reveal" onclick="toggleFaq(this)">
+    <div class="faq-question"><span>Come funziona l'analisi se non ho investimenti in mente?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-answer">Descrivi semplicemente la tua impresa — settore, dimensione, regione, situazione attuale. Il sistema individua le opportunità più adatte al tuo profilo e ti dice concretamente cosa potresti fare: "potresti assumere un under 36 con esonero contributivo", "il tuo ATECO rientra in questo bando regionale", "un investimento in X sarebbe coperto all'80%". Non sei obbligato a fare nulla — è informazione, non consulenza.</div>
+  </div>
+
+  <div class="faq-item reveal" onclick="toggleFaq(this)">
+    <div class="faq-question"><span>Come fa il sistema a sapere se sono compatibile con un bando?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-answer">Incrociamo 23 variabili del profilo della tua impresa — settore ATECO, regione, dipendenti, ricavi, anni di attività, tipologia di investimento — con i requisiti di ogni bando nel database. Il risultato è uno score 0-98% automatico e ripetibile. Per ogni bando compatibile ricevi una spiegazione chiara del perché.</div>
+  </div>
+
+  <div class="faq-item reveal" onclick="toggleFaq(this)">
+    <div class="faq-question"><span>Devo avere un commercialista per usarlo?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-answer">No. IncentivAI è pensato per chi non ha un commercialista specializzato in finanza agevolata. Ti dà le informazioni necessarie per capire quali bandi ti riguardano e cosa vale la pena esplorare. Se poi vuoi procedere con la domanda, puoi farlo con il tuo consulente avendo già i dati in mano — risparmiando ore di lavoro e potenzialmente migliaia di euro di parcelle.</div>
+  </div>
+
+  <div class="faq-item reveal" onclick="toggleFaq(this)">
+    <div class="faq-question"><span>I bandi nel database sono aggiornati?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-answer">Sì. Ogni settimana verifichiamo le scadenze e le aperture su MiMIT, Invitalia, incentivi.gov.it e i portali delle singole regioni. I bandi scaduti vengono rimossi automaticamente. Se sei iscritto, ricevi una notifica quando un bando a cui sei compatibile sta per scadere.</div>
+  </div>
+
+  <div class="faq-item reveal" onclick="toggleFaq(this)">
+    <div class="faq-question"><span>Cosa succede dopo che mi iscrivo alla lista?</span><span class="faq-arrow">▼</span></div>
+    <div class="faq-answer">Ti contatto personalmente entro 48 ore via email. Facciamo una breve chiamata per capire il profilo della tua impresa e ti do accesso all'analisi completa — gratuita durante questa fase. Nessuna carta di credito, nessun impegno.</div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<section class="cta-section">
+  <div class="reveal">
+    <h2 class="cta-title">Scopri le opportunità<br>che <em>non sapevi di avere.</em></h2>
+    <p class="cta-sub" style="margin-bottom:48px">Iscriviti gratis. Ti contatto personalmente entro 48 ore.</p>
+    <div class="cta-form">
+      <input class="form-input" type="email" placeholder="tua@email.it" id="emailCta">
+      <button class="btn-primary" onclick="handleCtaSubmit()">Voglio accedere →</button>
+    </div>
+    <div id="ctaSuccess" style="display:none;margin-top:20px;font-size:15px;color:#4ECBA4;font-weight:500">✓ Sei dentro. A presto.</div>
+    <div style="margin-top:16px;font-size:13px;color:var(--gray)">Gratis durante la beta. Nessun impegno.</div>
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="logo-mark" style="width:26px;height:26px;font-size:13px">I</div>
+    <span class="footer-copy">© 2026 IncentivAI. Tutti i diritti riservati.</span>
+  </div>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Cookie</a>
+    <a href="#">Contatti</a>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// FAQ
+function toggleFaq(el){
+  const open=el.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!open) el.classList.add('open');
+}
+
+// Report tabs
+function showReport(id, btn){
+  document.querySelectorAll('.report-preview').forEach(r=>r.classList.remove('active'));
+  document.querySelectorAll('.report-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// Waitlist submit
+function handleSubmit(inputId, rowId, successId, perksId){
+  const input=document.getElementById(inputId);
+  const email=input.value.trim();
+  if(!email||!email.includes('@')){
+    input.style.borderColor='rgba(232,80,80,.5)';
+    input.style.boxShadow='0 0 0 3px rgba(232,80,80,.1)';
+    setTimeout(()=>{ input.style.borderColor=''; input.style.boxShadow=''; },2000);
+    return;
+  }
+  document.getElementById(rowId).classList.add('hide');
+  if(perksId) document.getElementById(perksId).classList.add('hide');
+  document.getElementById(successId).classList.add('show');
+  console.log('Whitelist:', email);
+  // TODO: POST to Brevo API
+}
+
+function handleCtaSubmit(){
+  const input=document.getElementById('emailCta');
+  const email=input.value.trim();
+  if(!email||!email.includes('@')){
+    input.style.borderColor='rgba(232,80,80,.5)';
+    setTimeout(()=>{ input.style.borderColor=''; },2000);
+    return;
+  }
+  document.querySelector('.cta-form').style.display='none';
+  document.getElementById('ctaSuccess').style.display='block';
+  console.log('CTA:', email);
+}
+
+// Enter key
+document.getElementById('emailInput').addEventListener('keydown',e=>{
+  if(e.key==='Enter') handleSubmit('emailInput','formRow','formSuccess','wlPerks');
+});
+document.getElementById('emailCta').addEventListener('keydown',e=>{
+  if(e.key==='Enter') handleCtaSubmit();
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth',block:'start'}); }
+  });
+});
+</script>
+</body>
+</html>

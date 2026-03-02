@@ -422,8 +422,9 @@ footer{padding:36px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
   </a>
   <div class="nav-links">
     <a href="#come-funziona" class="nav-link">Come funziona</a>
-    <a href="#esempi" class="nav-link">Esempi</a>
-    <a href="#prezzi" class="nav-link">Prezzi</a>
+    <a href="chi-siamo.html" class="nav-link">Chi siamo</a>
+    <a href="risorse.html" class="nav-link">Risorse</a>
+    <a href="contatti.html" class="nav-link">Contatti</a>
     <button class="btn-nav" onclick="openWizard()">Scopri adesso →</button>
   </div>
 </nav>
@@ -527,22 +528,20 @@ footer{padding:36px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
       </div>
     </div>
 
-    <!-- ACCESSO ANTICIPATO — solo info, NO form email -->
+    <!-- ACCESSO ANTICIPATO — informativo, senza form -->
     <div class="reveal" style="margin-top:56px">
-      <div style="background:linear-gradient(135deg,rgba(201,146,42,.08) 0%,rgba(201,146,42,.03) 100%);border:1px solid rgba(201,146,42,.2);border-radius:16px;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;gap:48px;flex-wrap:wrap">
-        <div style="flex:1;min-width:260px">
-          <div style="font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px">🚀 Accesso anticipato — gratuito</div>
-          <div style="font-family:var(--serif);font-size:28px;color:var(--white);line-height:1.2;margin-bottom:12px;letter-spacing:-.4px">Entra gratis.<br><em>Nessuna carta di credito.</em></div>
-          <div style="font-size:14px;color:var(--gray);line-height:1.65">Siamo in fase di lancio. I primi iscritti ricevono l'analisi completa gratuita, influenzano lo sviluppo del prodotto e bloccano il prezzo di lancio — riservato solo a chi entra adesso.</div>
+      <div style="background:linear-gradient(135deg,rgba(201,146,42,.08) 0%,rgba(201,146,42,.03) 100%);border:1px solid rgba(201,146,42,.2);border-radius:16px;padding:40px 48px;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:20px">
+          <div style="width:36px;height:36px;background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🚀</div>
+          <div style="font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase">Accesso anticipato — gratuito</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:12px;flex-shrink:0">
-          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(202,214,230,.75)"><span style="color:var(--green);font-size:13px">✓</span> Analisi completa del profilo — gratis</div>
-          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(202,214,230,.75)"><span style="color:var(--green);font-size:13px">✓</span> Accesso in anteprima al prodotto</div>
-          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(202,214,230,.75)"><span style="color:var(--green);font-size:13px">✓</span> Prezzo di lancio bloccato</div>
-          <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:rgba(202,214,230,.75)"><span style="color:var(--green);font-size:13px">✓</span> Nessun impegno, disiscrizione in un click</div>
-          <div style="margin-top:8px">
-            <button class="btn-wizard" onclick="openWizard()" style="font-size:15px;padding:14px 28px">Scopri adesso →</button>
-          </div>
+        <div style="font-family:var(--serif);font-size:28px;color:var(--white);line-height:1.2;margin-bottom:12px;letter-spacing:-.4px">Entra gratis.<br><em>Nessuna carta di credito.</em></div>
+        <div style="font-size:15px;color:rgba(202,214,230,.65);line-height:1.7;max-width:600px;margin-bottom:32px">Siamo in fase di lancio. I primi iscritti ricevono l'analisi completa gratuita, influenzano lo sviluppo del prodotto e bloccano il prezzo di lancio — significativamente più basso dei prezzi definitivi. L'email la raccogliamo solo alla fine, dopo che hai visto i tuoi risultati.</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+          <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--green);font-size:13px;margin-top:2px">✓</span><span style="font-size:14px;color:rgba(202,214,230,.75);line-height:1.4">Analisi completa del profilo — gratuita durante la beta</span></div>
+          <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--green);font-size:13px;margin-top:2px">✓</span><span style="font-size:14px;color:rgba(202,214,230,.75);line-height:1.4">Accesso in anteprima al prodotto completo al lancio</span></div>
+          <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--green);font-size:13px;margin-top:2px">✓</span><span style="font-size:14px;color:rgba(202,214,230,.75);line-height:1.4">Prezzo di lancio bloccato — riservato ai primi iscritti</span></div>
+          <div style="display:flex;align-items:flex-start;gap:10px"><span style="color:var(--green);font-size:13px;margin-top:2px">✓</span><span style="font-size:14px;color:rgba(202,214,230,.75);line-height:1.4">Nessun impegno, disiscrizione in un click</span></div>
         </div>
       </div>
     </div>
@@ -735,6 +734,8 @@ footer{padding:36px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
     <span class="footer-copy">© 2026 IncentivAI. Tutti i diritti riservati.</span>
   </div>
   <div class="footer-links">
+    <a href="chi-siamo.html">Chi siamo</a>
+    <a href="risorse.html">Risorse</a>
     <a href="privacy.html">Privacy Policy</a>
     <a href="cookie.html">Cookie</a>
     <a href="contatti.html">Contatti</a>

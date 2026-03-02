@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi siamo — IncentivAI</title>
+<meta name="description" content="IncentivAI nasce da una domanda semplice: perché il 60% delle PMI italiane non accede ai fondi pubblici che gli spettano? Scopri chi siamo e cosa stiamo costruendo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0E1B3D;--navy-mid:#162348;--navy-light:#1E3060;--navy-card:#131F45;
+  --gold:#C9922A;--gold-light:#E8B44A;--gold-pale:#F5D98A;
+  --green:#2ECC8A;--white:#FAFAF7;--gray:#8A9AAF;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+  --expo:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--navy);color:var(--white);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
+
+/* Noise texture overlay */
+body::before{content:'';position:fixed;inset:0;opacity:.025;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:linear-gradient(to bottom,rgba(14,27,61,.95),transparent);transition:all .4s}
+nav.scrolled{padding:14px 48px;background:rgba(14,27,61,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,146,42,.1)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold-pale));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;color:var(--navy)}
+.logo-text{font-size:17px;font-weight:600;color:var(--white);letter-spacing:-.3px}
+.logo-text span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-link{font-size:14px;color:var(--gray);text-decoration:none;transition:color .2s}
+.nav-link:hover,.nav-link.active{color:var(--white)}
+.btn-nav{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.35);color:var(--gold-light);padding:8px 20px;border-radius:6px;font-size:13px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;font-family:var(--sans)}
+.btn-nav:hover{background:rgba(201,146,42,.25)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 48px 80px;position:relative;overflow:hidden}
+.hero-glow{position:absolute;width:700px;height:700px;background:radial-gradient(ellipse,rgba(201,146,42,.07) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-55%);pointer-events:none}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,146,42,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.03) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 70% 70% at center,black 20%,transparent 100%);pointer-events:none}
+.hero-inner{max-width:900px;position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+
+.hero-left{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,146,42,.1);border:1px solid rgba(201,146,42,.22);border-radius:100px;padding:6px 16px;margin-bottom:32px;font-family:var(--mono);font-size:11px;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase;animation:fadeUp .6s var(--expo) forwards}
+.dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
+h1{font-family:var(--serif);font-size:clamp(40px,5.5vw,64px);font-weight:400;line-height:1.08;letter-spacing:-1.5px;color:var(--white);margin-bottom:24px;animation:fadeUp .7s var(--expo) .1s both}
+h1 em{font-style:italic;color:var(--gold-light)}
+.hero-sub{font-size:17px;font-weight:300;color:rgba(200,215,230,.65);line-height:1.7;animation:fadeUp .7s var(--expo) .2s both;margin-bottom:36px}
+.btn-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold),#A8761A);color:var(--navy);border:none;border-radius:10px;padding:15px 28px;font-size:15px;font-weight:700;text-decoration:none;transition:all .25s var(--expo);animation:fadeUp .7s var(--expo) .3s both;font-family:var(--sans)}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,146,42,.4)}
+
+.hero-right{animation:fadeUp .8s var(--expo) .25s both}
+.stat-stack{display:flex;flex-direction:column;gap:16px}
+.stat-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:24px 28px;position:relative;overflow:hidden;transition:all .3s var(--expo)}
+.stat-box::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px;background:linear-gradient(180deg,var(--gold),var(--gold-pale))}
+.stat-box:hover{border-color:rgba(201,146,42,.18);transform:translateX(4px)}
+.stat-num{font-family:var(--serif);font-size:44px;color:var(--gold-light);line-height:1;margin-bottom:6px;font-style:italic}
+.stat-label{font-size:13px;color:rgba(200,215,230,.6);line-height:1.5}
+.stat-label strong{color:rgba(220,235,255,.8);font-weight:500}
+
+/* ── IL PROBLEMA ── */
+.problem-section{padding:100px 48px;position:relative;z-index:1}
+.problem-inner{max-width:1000px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px}
+.section-title{font-family:var(--serif);font-size:clamp(30px,4vw,46px);font-weight:400;color:var(--white);line-height:1.15;letter-spacing:-.8px;margin-bottom:56px}
+.section-title em{font-style:italic;color:var(--gold-light)}
+
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.problem-prose{font-size:16px;color:rgba(200,215,230,.7);line-height:1.85}
+.problem-prose p{margin-bottom:20px}
+.problem-prose strong{color:rgba(240,248,255,.9);font-weight:500}
+.problem-prose em{font-style:italic;color:var(--gold-light)}
+
+.problem-visual{display:flex;flex-direction:column;gap:14px}
+.pv-item{background:var(--navy-mid);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:20px 24px;display:flex;align-items:flex-start;gap:14px;transition:all .25s var(--expo)}
+.pv-item:hover{border-color:rgba(201,146,42,.18);transform:translateY(-2px)}
+.pv-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.pv-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:5px;line-height:1.3}
+.pv-text{font-size:13px;color:var(--gray);line-height:1.55}
+
+/* ── LA SOLUZIONE ── */
+.solution-section{padding:80px 48px 100px;position:relative;z-index:1;border-top:1px solid rgba(201,146,42,.08);background:linear-gradient(180deg,rgba(201,146,42,.03) 0%,transparent 60%)}
+.solution-inner{max-width:1000px;margin:0 auto}
+.solution-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.sol-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:32px 28px;position:relative;overflow:hidden;transition:all .3s var(--expo)}
+.sol-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-pale));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--expo)}
+.sol-card:hover{border-color:rgba(201,146,42,.2);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.3)}
+.sol-card:hover::after{transform:scaleX(1)}
+.sol-num{font-family:var(--mono);font-size:11px;color:rgba(201,146,42,.4);letter-spacing:.1em;margin-bottom:20px}
+.sol-icon{font-size:32px;margin-bottom:16px}
+.sol-title{font-size:17px;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.3}
+.sol-text{font-size:13px;color:var(--gray);line-height:1.65}
+
+/* ── VALORI ── */
+.values-section{padding:80px 48px 100px;position:relative;z-index:1}
+.values-inner{max-width:1000px;margin:0 auto}
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,.04);border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.06);margin-top:56px}
+.val-card{background:var(--navy-mid);padding:40px;transition:background .3s}
+.val-card:hover{background:var(--navy-light)}
+.val-icon{font-size:28px;margin-bottom:16px}
+.val-title{font-size:17px;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.3}
+.val-text{font-size:14px;color:var(--gray);line-height:1.65}
+
+/* ── FOUNDER NOTE ── */
+.founder-section{padding:80px 48px 100px;position:relative;z-index:1;border-top:1px solid rgba(255,255,255,.05)}
+.founder-inner{max-width:760px;margin:0 auto}
+.founder-card{background:var(--navy-mid);border:1px solid rgba(201,146,42,.15);border-radius:20px;padding:48px;position:relative;overflow:hidden}
+.founder-card::before{content:'';position:absolute;top:0;right:0;width:300px;height:300px;background:radial-gradient(ellipse,rgba(201,146,42,.06) 0%,transparent 70%);pointer-events:none}
+.quote-mark{font-family:var(--serif);font-size:80px;color:rgba(201,146,42,.15);line-height:.8;margin-bottom:8px;font-style:italic}
+.founder-quote{font-family:var(--serif);font-size:clamp(20px,2.5vw,26px);color:var(--white);line-height:1.45;letter-spacing:-.3px;margin-bottom:32px;font-style:italic;position:relative;z-index:1}
+.founder-quote em{color:var(--gold-light);font-style:normal}
+.founder-sig{display:flex;align-items:center;gap:16px;position:relative;z-index:1}
+.founder-avatar{width:48px;height:48px;background:linear-gradient(135deg,rgba(201,146,42,.3),rgba(201,146,42,.1));border:1px solid rgba(201,146,42,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:20px;color:var(--gold-light);font-style:italic}
+.founder-name{font-size:15px;font-weight:600;color:var(--white)}
+.founder-role{font-size:12px;color:var(--gray);font-family:var(--mono);margin-top:2px}
+
+/* ── FINAL CTA ── */
+.final-cta{padding:80px 48px 100px;text-align:center;position:relative;z-index:1}
+.final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at center,rgba(201,146,42,.06) 0%,transparent 70%);pointer-events:none}
+.final-cta h2{font-family:var(--serif);font-size:clamp(34px,4.5vw,54px);font-weight:400;color:var(--white);line-height:1.12;letter-spacing:-1px;margin-bottom:16px}
+.final-cta h2 em{font-style:italic;color:var(--gold-light)}
+.final-cta p{font-size:16px;color:var(--gray);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6}
+.cta-group{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),#A8761A);color:var(--navy);border:none;border-radius:10px;padding:15px 28px;font-size:15px;font-weight:700;text-decoration:none;transition:all .25s var(--expo);font-family:var(--sans)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,146,42,.4)}
+.btn-ghost{display:inline-flex;align-items:center;background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(202,214,230,.7);border-radius:10px;padding:15px 24px;font-size:15px;text-decoration:none;transition:all .2s;font-family:var(--sans)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.3);color:var(--white)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--expo),transform .7s var(--expo)}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* FOOTER */
+footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;position:relative;z-index:1}
+.footer-copy{font-size:13px;color:rgba(138,154,175,.4)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:rgba(138,154,175,.4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gray)}
+
+@media(max-width:900px){
+  .hero-inner,.problem-grid,.solution-grid,.values-grid{grid-template-columns:1fr}
+  .hero-right{display:none}
+}
+@media(max-width:768px){
+  nav,nav.scrolled{padding:16px 24px}
+  .nav-links .nav-link{display:none}
+  .hero{padding:100px 24px 64px}
+  .problem-section,.solution-section,.values-section,.founder-section,.final-cta{padding:64px 24px}
+  .founder-card{padding:32px 24px}
+  footer{padding:24px;flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="logo" href="index.html">
+    <div class="logo-mark">I</div>
+    <span class="logo-text">Incentiv<span>AI</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="chi-siamo.html" class="nav-link active">Chi siamo</a>
+    <a href="risorse.html" class="nav-link">Risorse</a>
+    <a href="contatti.html" class="nav-link">Contatti</a>
+    <a href="index.html#whitelist" class="btn-nav">Accesso anticipato →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow"><div class="dot"></div>Chi siamo</div>
+      <h1>Nati da una<br>domanda <em>semplice.</em></h1>
+      <p class="hero-sub">Perché il 60% delle PMI italiane non accede ai fondi pubblici che gli spettano? Non per mancanza di requisiti — ma per mancanza di informazioni accessibili. Stiamo risolvendo questo.</p>
+      <a href="index.html" class="btn-cta">Fai l'analisi gratuita →</a>
+    </div>
+    <div class="hero-right">
+      <div class="stat-stack">
+        <div class="stat-box">
+          <div class="stat-num">€50B</div>
+          <div class="stat-label"><strong>di incentivi pubblici</strong> disponibili ogni anno in Italia per le imprese</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">60%</div>
+          <div class="stat-label"><strong>delle PMI non accede</strong> — non per mancanza di requisiti, ma di informazioni</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">30+</div>
+          <div class="stat-label"><strong>bandi verificati</strong> nel nostro database, aggiornati ogni settimana</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IL PROBLEMA -->
+<section class="problem-section">
+  <div class="problem-inner">
+    <div class="reveal">
+      <div class="section-label">// Il problema che risolviamo</div>
+      <h2 class="section-title">L'Italia finanzia le sue imprese.<br><em>Poche lo sanno davvero.</em></h2>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-prose reveal">
+        <p>Ogni anno lo Stato italiano, le Regioni e l'Unione Europea mettono a disposizione miliardi di euro in incentivi, contributi a fondo perduto, finanziamenti agevolati e crediti d'imposta destinati alle piccole e medie imprese.</p>
+        <p>La realtà è che accedere a questi fondi richiede di sapere <strong>dove cercare</strong>, di capire un linguaggio tecnico-burocratico complesso, e di avere il tempo — o i soldi — per affidarsi a un consulente specializzato.</p>
+        <p>Risultato: <em>la maggior parte delle PMI non accede</em>. Non perché non abbiano i requisiti. Ma perché nessuno gliel'ha mai spiegato in modo chiaro.</p>
+        <p>IncentivAI nasce per cambiare questo.</p>
+      </div>
+      <div class="problem-visual reveal d1">
+        <div class="pv-item">
+          <div class="pv-icon">🗂️</div>
+          <div>
+            <div class="pv-title">Informazioni frammentate</div>
+            <div class="pv-text">I bandi sono distribuiti su decine di portali — MiMIT, Invitalia, siti regionali, Gazzetta Ufficiale. Trovarli tutti richiede ore.</div>
+          </div>
+        </div>
+        <div class="pv-item">
+          <div class="pv-icon">📜</div>
+          <div>
+            <div class="pv-title">Linguaggio inaccessibile</div>
+            <div class="pv-text">I testi ufficiali sono scritti per legali e commercialisti, non per chi gestisce una torneria o un negozio di abbigliamento.</div>
+          </div>
+        </div>
+        <div class="pv-item">
+          <div class="pv-icon">💸</div>
+          <div>
+            <div class="pv-title">Consulenza costosa</div>
+            <div class="pv-text">Un commercialista specializzato in finanza agevolata chiede €500-2.000 solo per l'istruttoria. Molte PMI rinunciano prima di cominciare.</div>
+          </div>
+        </div>
+        <div class="pv-item">
+          <div class="pv-icon">⏰</div>
+          <div>
+            <div class="pv-title">Scadenze imprevedibili</div>
+            <div class="pv-text">I bandi aprono e chiudono senza preavviso. Chi non monitora costantemente perde le finestre di accesso — spesso per sempre.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LA SOLUZIONE -->
+<section class="solution-section">
+  <div class="solution-inner">
+    <div class="reveal">
+      <div class="section-label">// Come lo risolviamo</div>
+      <h2 class="section-title">Tre minuti.<br><em>Risultati concreti.</em></h2>
+    </div>
+    <div class="solution-grid">
+      <div class="sol-card reveal">
+        <div class="sol-num">01 / 03</div>
+        <div class="sol-icon">🎯</div>
+        <div class="sol-title">Matching intelligente</div>
+        <div class="sol-text">Incrociamo il profilo della tua impresa — settore, regione, dimensione, obiettivi — con i requisiti di ogni bando nel database. Niente risultati generici: solo quelli che fanno davvero al caso tuo.</div>
+      </div>
+      <div class="sol-card reveal d1">
+        <div class="sol-num">02 / 03</div>
+        <div class="sol-icon">💡</div>
+        <div class="sol-title">Opportunità non ovvie</div>
+        <div class="sol-text">Non ti diciamo solo cosa hai cercato. Ti segnaliamo le opportunità che non sapevi di avere: bandi che si cumulano, incentivi regionali sottoutilizzati, agevolazioni per il tuo specifico settore.</div>
+      </div>
+      <div class="sol-card reveal d2">
+        <div class="sol-num">03 / 03</div>
+        <div class="sol-icon">📋</div>
+        <div class="sol-title">Guida alla domanda</div>
+        <div class="sol-text">Per ogni bando compatibile: documenti necessari, guida alla compilazione, link al portale ufficiale, scadenze e i 5 errori più comuni che causano il rigetto. Arrivi alla porta già preparato.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALORI -->
+<section class="values-section">
+  <div class="values-inner">
+    <div class="reveal">
+      <div class="section-label">// I nostri principi</div>
+      <h2 class="section-title">Cosa guida<br><em>ogni scelta.</em></h2>
+    </div>
+    <div class="values-grid">
+      <div class="val-card reveal">
+        <div class="val-icon">🎯</div>
+        <div class="val-title">Concretezza prima di tutto</div>
+        <div class="val-text">Non vendiamo sogni. Ogni bando che mostriamo è verificato, attivo e realmente accessibile. Se un'opportunità non è praticabile per la tua situazione specifica, non la inseriamo nei tuoi risultati.</div>
+      </div>
+      <div class="val-card reveal d1">
+        <div class="val-icon">🔍</div>
+        <div class="val-title">Trasparenza radicale</div>
+        <div class="val-text">Ti diciamo come funziona l'analisi, quali sono i limiti del servizio e cosa puoi aspettarti realisticamente. Nessun marketing gonfiato, nessuna promessa impossibile. Se un bando richiede SPID, te lo diciamo subito.</div>
+      </div>
+      <div class="val-card reveal d2">
+        <div class="val-icon">⚡</div>
+        <div class="val-title">Velocità rispettosa del tuo tempo</div>
+        <div class="val-text">Un imprenditore che gestisce un'azienda non ha tempo da perdere. Tre minuti per l'analisi, risultati immediati, guide chiare e dirette. Nessun form infinito, nessuna chiamata commerciale obbligatoria.</div>
+      </div>
+      <div class="val-card reveal d3">
+        <div class="val-icon">🇮🇹</div>
+        <div class="val-title">Fatti per le PMI italiane</div>
+        <div class="val-text">Il sistema degli incentivi italiani è specifico, complesso e in continua evoluzione. Non siamo un servizio generico adattato all'Italia: siamo costruiti da zero per la realtà delle piccole e medie imprese italiane.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER NOTE -->
+<section class="founder-section">
+  <div class="founder-inner">
+    <div class="founder-card reveal">
+      <div class="quote-mark">"</div>
+      <div class="founder-quote">
+        Ho visto troppi imprenditori rinunciare a fondi che gli spettavano — non per pigrizia, ma perché il sistema è fatto per scoraggiarli. <em>IncentivAI è lo strumento che avrei voluto avere</em> quando ho capito quanto denaro pubblico stesse andando sprecato non per mancanza di richiedenti, ma per mancanza di informazioni accessibili.
+      </div>
+      <div class="founder-sig">
+        <div class="founder-avatar">A</div>
+        <div>
+          <div class="founder-name">Fondatore, IncentivAI</div>
+          <div class="founder-role">// Società in via di costituzione · Italia · 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="reveal">
+    <h2>Unisciti a chi ha già<br><em>scoperto cosa gli spetta.</em></h2>
+    <p>Tre minuti. Gratuito. Risultati immediati. Nessuna carta di credito.</p>
+    <div class="cta-group">
+      <a href="index.html" class="btn-primary">Fai l'analisi gratuita →</a>
+      <a href="contatti.html" class="btn-ghost">Hai domande? Scrivici</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="logo-mark" style="width:26px;height:26px;font-size:13px">I</div>
+    <span class="footer-copy">© 2026 IncentivAI. Tutti i diritti riservati.</span>
+  </div>
+  <div class="footer-links">
+    <a href="chi-siamo.html">Chi siamo</a>
+    <a href="risorse.html">Risorse</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="cookie.html">Cookie</a>
+    <a href="contatti.html">Contatti</a>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+});
+const obs=new IntersectionObserver(e=>e.forEach(el=>{
+  if(el.isIntersecting)el.target.classList.add('visible');
+}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

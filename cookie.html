@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookie Policy — IncentivAI</title>
+<meta name="description" content="Cookie Policy di IncentivAI — informazioni sui cookie utilizzati dal sito incentivai.it">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0E1B3D;--navy-mid:#162348;
+  --gold:#C9922A;--gold-light:#E8B44A;--gold-pale:#F5D98A;
+  --green:#2ECC8A;--white:#FAFAF7;--gray:#8A9AAF;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--navy);color:var(--white);-webkit-font-smoothing:antialiased;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;opacity:.025;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid rgba(255,255,255,.05);position:relative;z-index:10}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold-pale));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;color:var(--navy)}
+.logo-text{font-size:17px;font-weight:600;color:var(--white);letter-spacing:-.3px}
+.logo-text span{color:var(--gold)}
+.btn-back{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--gray);padding:8px 18px;border-radius:6px;font-size:13px;text-decoration:none;transition:all .2s}
+.btn-back:hover{border-color:rgba(255,255,255,.2);color:var(--white)}
+.page{max-width:760px;margin:0 auto;padding:72px 48px 100px;position:relative;z-index:1}
+.page-eyebrow{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.page-eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);display:inline-block}
+h1{font-family:var(--serif);font-size:clamp(36px,5vw,54px);font-weight:400;color:var(--white);line-height:1.1;letter-spacing:-1px;margin-bottom:16px}
+h1 em{font-style:italic;color:var(--gold-light)}
+.update-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:6px 14px;font-family:var(--mono);font-size:11px;color:var(--gray);margin-bottom:56px}
+.info-box{background:rgba(46,204,138,.06);border:1px solid rgba(46,204,138,.2);border-radius:12px;padding:20px 24px;margin:0 0 40px;display:flex;align-items:flex-start;gap:14px}
+.info-icon{font-size:18px;flex-shrink:0;margin-top:2px}
+.info-text{font-size:13px;color:rgba(200,215,230,.7);line-height:1.65}
+.info-text strong{color:#4ECBA4}
+.prose{font-size:15px;line-height:1.8;color:rgba(200,215,230,.75)}
+.prose h2{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--white);margin-top:48px;margin-bottom:16px;letter-spacing:-.3px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.06)}
+.prose h2 em{font-style:italic;color:var(--gold-light)}
+.prose p{margin-bottom:16px}
+.prose strong{color:rgba(240,245,255,.9);font-weight:500}
+.prose a{color:var(--gold-light);text-decoration:none;border-bottom:1px solid rgba(201,146,42,.3);transition:border-color .2s}
+.prose a:hover{border-color:var(--gold-light)}
+.cookie-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13px}
+.cookie-table thead{background:rgba(201,146,42,.08)}
+.cookie-table th{text-align:left;padding:12px 16px;font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.06em;text-transform:uppercase;font-weight:500;border-bottom:1px solid rgba(201,146,42,.2)}
+.cookie-table td{padding:12px 16px;border-bottom:1px solid rgba(255,255,255,.05);color:rgba(200,215,230,.7);vertical-align:top;line-height:1.5}
+.cookie-table tr:last-child td{border-bottom:none}
+.tag-tech{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:3px;background:rgba(46,204,138,.1);color:#4ECBA4;border:1px solid rgba(46,204,138,.2)}
+.tag-na{display:inline-block;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:3px;background:rgba(138,154,175,.08);color:rgba(138,154,175,.6);border:1px solid rgba(138,154,175,.15)}
+footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;position:relative;z-index:1}
+.footer-copy{font-size:13px;color:rgba(138,154,175,.4)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:rgba(138,154,175,.4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gray)}
+@media(max-width:768px){nav{padding:16px 24px}.page{padding:48px 24px 80px}.cookie-table{display:block;overflow-x:auto}footer{padding:24px;flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">
+    <div class="logo-mark">I</div>
+    <span class="logo-text">Incentiv<span>AI</span></span>
+  </a>
+  <a href="index.html" class="btn-back">← Torna al sito</a>
+</nav>
+
+<div class="page">
+  <div class="page-eyebrow">Documento legale</div>
+  <h1>Cookie<br><em>Policy</em></h1>
+  <div class="update-badge">📅 Ultimo aggiornamento: marzo 2026</div>
+
+  <div class="info-box">
+    <div class="info-icon">✅</div>
+    <div class="info-text"><strong>In sintesi:</strong> questo sito utilizza esclusivamente cookie tecnici strettamente necessari al funzionamento. Non utilizziamo cookie di profilazione, cookie di tracciamento pubblicitario o strumenti di analytics. I cookie tecnici non richiedono il consenso ai sensi della normativa italiana vigente.</div>
+  </div>
+
+  <div class="prose">
+
+    <h2>1. Cosa sono i <em>cookie</em></h2>
+    <p>I cookie sono piccoli file di testo memorizzati sul dispositivo dell'utente quando visita un sito web. Vengono utilizzati per garantire il corretto funzionamento del sito, ricordare preferenze di navigazione e, in alcuni casi, raccogliere informazioni sull'utilizzo.</p>
+    <p>La presente Cookie Policy si applica al sito <strong>incentivai.it</strong> e ai suoi sottodomini, gestito da IncentivAI (di seguito "il Titolare").</p>
+
+    <h2>2. Tipologie di cookie <em>utilizzate</em></h2>
+    <table class="cookie-table">
+      <thead><tr><th>Tipologia</th><th>Finalità</th><th>Consenso richiesto</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag-tech">Tecnici</span></td><td>Necessari al funzionamento del sito: gestione sessione, sicurezza delle form, preferenze di visualizzazione.</td><td>No — esentati per legge</td></tr>
+        <tr><td><span class="tag-na">Analitici</span></td><td>Al momento <strong>non utilizzati</strong>. Se introdotti in futuro (con IP anonimizzato), aggiorneremo questa policy e richiederemo consenso esplicito.</td><td>Sì (quando introdotti)</td></tr>
+        <tr><td><span class="tag-na">Profilazione</span></td><td><strong>Non utilizzati.</strong> IncentivAI non utilizza cookie pubblicitari e non consente a terze parti di profilare i visitatori.</td><td>Non applicabile</td></tr>
+      </tbody>
+    </table>
+
+    <h2>3. Cookie tecnici <em>presenti sul sito</em></h2>
+    <table class="cookie-table">
+      <thead><tr><th>Nome</th><th>Fornitore</th><th>Durata</th><th>Scopo</th></tr></thead>
+      <tbody>
+        <tr><td style="font-family:var(--mono);font-size:12px">__cf_bm</td><td>Cloudflare / Netlify</td><td>30 minuti</td><td>Protezione da bot e sicurezza infrastruttura</td></tr>
+        <tr><td style="font-family:var(--mono);font-size:12px">nf_jwt</td><td>Netlify</td><td>Sessione</td><td>Token di sicurezza hosting — non traccia l'utente</td></tr>
+        <tr><td style="font-family:var(--mono);font-size:12px">_session</td><td>incentivai.it</td><td>Sessione</td><td>Gestione sessione — eliminato alla chiusura del browser</td></tr>
+      </tbody>
+    </table>
+    <p>Questi cookie non contengono dati personali identificabili e non vengono trasmessi a terze parti per scopi commerciali.</p>
+
+    <h2>4. Servizi di <em>terze parti</em></h2>
+    <p><strong>Netlify</strong> (hosting): imposta cookie tecnici per la gestione dell'infrastruttura. Consulta la <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">Privacy Policy di Netlify</a>.</p>
+    <p><strong>Google Fonts</strong> (font tipografici): le richieste ai server Google per il caricamento dei font possono comportare la registrazione dell'indirizzo IP. Nessun cookie di profilazione viene impostato. Informazioni su <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">Google Fonts e privacy</a>.</p>
+    <p>Non utilizziamo Google Analytics, Facebook Pixel, LinkedIn Insight Tag, Google Tag Manager o altri strumenti di tracciamento comportamentale.</p>
+
+    <h2>5. Come <em>gestire i cookie</em></h2>
+    <p>Poiché utilizziamo solo cookie tecnici necessari, non è presente un banner di consenso: la normativa italiana esonera tali cookie dall'obbligo di consenso (Linee guida cookie Garante Privacy, 10 giugno 2021).</p>
+    <p>L'utente può comunque gestire o eliminare i cookie dal proprio browser:</p>
+    <p>
+      <a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener">Google Chrome</a> &nbsp;·&nbsp;
+      <a href="https://support.mozilla.org/it/kb/gestione-cookies" target="_blank" rel="noopener">Mozilla Firefox</a> &nbsp;·&nbsp;
+      <a href="https://support.apple.com/it-it/guide/safari/sfri11471/mac" target="_blank" rel="noopener">Apple Safari</a> &nbsp;·&nbsp;
+      <a href="https://support.microsoft.com/it-it/microsoft-edge/eliminare-i-cookie-in-microsoft-edge" target="_blank" rel="noopener">Microsoft Edge</a>
+    </p>
+    <p>Nota: la disabilitazione dei cookie tecnici potrebbe compromettere alcune funzionalità del sito.</p>
+
+    <h2>6. Modifiche alla <em>Cookie Policy</em></h2>
+    <p>Il Titolare si riserva il diritto di aggiornare questa Cookie Policy. In caso di modifiche sostanziali — come l'introduzione di cookie analitici o di profilazione — verrà aggiunto un banner di consenso in conformità con la normativa vigente. La versione aggiornata è sempre disponibile a questo indirizzo.</p>
+
+    <h2>7. Normativa <em>di riferimento</em></h2>
+    <p>Regolamento UE 2016/679 (GDPR) · D.Lgs. 196/2003 come modificato dal D.Lgs. 101/2018 · Provvedimento Garante Privacy 8 maggio 2014 · Linee guida cookie Garante Privacy 10 giugno 2021.</p>
+
+    <h2>8. Contatti</h2>
+    <p>Per domande sui cookie: <a href="mailto:info@incentivai.it">info@incentivai.it</a><br>
+    Per i diritti sui dati personali: consulta la <a href="privacy.html">Privacy Policy</a>.</p>
+
+  </div>
+</div>
+
+<footer>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="logo-mark" style="width:26px;height:26px;font-size:13px">I</div>
+    <span class="footer-copy">© 2026 IncentivAI. Tutti i diritti riservati.</span>
+  </div>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="cookie.html">Cookie</a>
+    <a href="contatti.html">Contatti</a>
+  </div>
+</footer>
+
+</body>
+</html>

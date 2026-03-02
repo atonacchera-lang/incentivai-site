@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contatti — IncentivAI</title>
-<meta name="description" content="Contatta IncentivAI per domande sui bandi pubblici per PMI, sul servizio o per qualsiasi chiarimento.">
+<meta name="description" content="Contatta il team di IncentivAI. Siamo disponibili per rispondere a qualsiasi domanda su bandi, incentivi e sul funzionamento del servizio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --navy:#0E1B3D;--navy-mid:#162348;--navy-card:#131F45;
+  --navy:#0E1B3D;--navy-mid:#162348;--navy-light:#1E3060;
   --gold:#C9922A;--gold-light:#E8B44A;--gold-pale:#F5D98A;
   --green:#2ECC8A;--white:#FAFAF7;--gray:#8A9AAF;
   --serif:'Instrument Serif',Georgia,serif;
@@ -20,96 +20,84 @@
   --expo:cubic-bezier(0.16,1,0.3,1);
 }
 html{scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--navy);color:var(--white);-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(201,146,42,.05) 0%,transparent 70%);pointer-events:none;z-index:0}
-
-nav{display:flex;align-items:center;justify-content:space-between;padding:20px 48px;border-bottom:1px solid rgba(255,255,255,.05);position:relative;z-index:10}
+body{font-family:var(--sans);background:var(--navy);color:var(--white);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.025;pointer-events:none;z-index:0}
+body::after{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 30%,rgba(201,146,42,.05) 0%,transparent 70%);pointer-events:none;z-index:0}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(14,27,61,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,146,42,.12)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold-pale));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;color:var(--navy)}
+.logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold) 0%,var(--gold-pale) 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;color:var(--navy)}
 .logo-text{font-size:17px;font-weight:600;color:var(--white);letter-spacing:-.3px}
 .logo-text span{color:var(--gold)}
-.btn-back{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--gray);padding:8px 18px;border-radius:6px;font-size:13px;text-decoration:none;transition:all .2s}
-.btn-back:hover{border-color:rgba(255,255,255,.2);color:var(--white)}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-
-.contact-hero{padding:80px 48px 56px;text-align:center;position:relative;z-index:1;max-width:680px;margin:0 auto}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,146,42,.1);border:1px solid rgba(201,146,42,.22);border-radius:100px;padding:6px 16px;margin-bottom:28px;font-family:var(--mono);font-size:11px;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase;animation:fadeUp .6s var(--expo) forwards}
-.dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 2s ease-in-out infinite}
-h1{font-family:var(--serif);font-size:clamp(38px,5.5vw,62px);font-weight:400;line-height:1.1;letter-spacing:-1.2px;margin-bottom:20px;color:var(--white);animation:fadeUp .7s var(--expo) .1s both}
-h1 em{font-style:italic;color:var(--gold-light)}
-.hero-sub{font-size:16px;font-weight:300;color:rgba(200,215,230,.65);line-height:1.7;animation:fadeUp .7s var(--expo) .2s both}
-
-.formation-notice{max-width:760px;margin:0 auto;padding:0 48px 0;position:relative;z-index:1}
-.notice-card{background:linear-gradient(135deg,rgba(201,146,42,.06),rgba(201,146,42,.02));border:1px solid rgba(201,146,42,.2);border-radius:14px;padding:24px 28px;display:flex;align-items:flex-start;gap:14px;animation:fadeUp .7s var(--expo) .3s both}
-.notice-icon{font-size:20px;flex-shrink:0;margin-top:1px}
-.notice-title{font-size:13px;font-weight:600;color:var(--gold-light);margin-bottom:7px}
-.notice-text{font-size:13px;color:rgba(200,215,230,.6);line-height:1.7}
-
-.contact-grid{max-width:960px;margin:0 auto;padding:48px 48px 100px;display:grid;grid-template-columns:1fr 1fr;gap:20px;position:relative;z-index:1}
-
-.contact-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:36px;transition:all .25s var(--expo);position:relative;overflow:hidden;animation:fadeUp .7s var(--expo) both}
-.contact-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,146,42,.04),transparent);opacity:0;transition:opacity .25s}
-.contact-card:hover{border-color:rgba(201,146,42,.2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.25)}
-.contact-card:hover::before{opacity:1}
-.cc-1{animation-delay:.1s}.cc-2{animation-delay:.2s}
-
-.card-icon-wrap{width:50px;height:50px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:22px;border:1px solid}
-.icon-gold{background:rgba(201,146,42,.12);border-color:rgba(201,146,42,.25)}
-.icon-blue{background:rgba(90,158,232,.1);border-color:rgba(90,158,232,.2)}
-.card-type{font-family:var(--mono);font-size:10px;font-weight:500;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
-.card-title{font-size:20px;font-weight:600;color:var(--white);margin-bottom:10px;line-height:1.3;letter-spacing:-.2px}
-.card-desc{font-size:14px;color:var(--gray);line-height:1.65;margin-bottom:24px}
-
-.contact-link{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 18px;text-decoration:none;transition:all .2s;margin-bottom:12px}
-.contact-link:hover{border-color:rgba(201,146,42,.35);background:rgba(201,146,42,.06)}
-.cl-icon{font-size:16px;flex-shrink:0}
-.cl-body{flex:1}
-.cl-label{font-size:10px;font-family:var(--mono);color:var(--gray);letter-spacing:.05em;margin-bottom:2px;text-transform:uppercase}
-.cl-value{font-size:14px;font-weight:500;color:var(--white)}
-.cl-arrow{color:var(--gold);font-size:12px;transition:transform .2s}
-.contact-link:hover .cl-arrow{transform:translateX(3px)}
-
-.response-tag{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-family:var(--mono);font-size:11px;color:var(--green);background:rgba(46,204,138,.08);border:1px solid rgba(46,204,138,.18);border-radius:100px;padding:4px 10px}
-
-.faq-list{display:flex;flex-direction:column;gap:8px}
-.faq-item-c{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:13px 16px;cursor:pointer;transition:all .2s}
-.faq-item-c:hover{border-color:rgba(201,146,42,.18);background:rgba(201,146,42,.04)}
-.fiq-q{font-size:13px;font-weight:500;color:rgba(220,230,245,.8);display:flex;align-items:center;justify-content:space-between;gap:8px;line-height:1.4}
-.fiq-arr{color:var(--gold);font-size:11px;flex-shrink:0;transition:transform .3s}
-.faq-item-c.open .fiq-arr{transform:rotate(180deg)}
-.fiq-a{font-size:12px;color:var(--gray);line-height:1.65;max-height:0;overflow:hidden;transition:max-height .4s,padding-top .3s}
-.faq-item-c.open .fiq-a{max-height:200px;padding-top:10px}
-
-.wide-card{grid-column:1/-1;background:var(--navy-mid);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:36px 40px;animation:fadeUp .7s var(--expo) .35s both}
-.wide-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.wide-badge{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
-.wide-title{font-family:var(--serif);font-size:24px;color:var(--white);line-height:1.25;margin-bottom:12px;letter-spacing:-.3px}
-.wide-title em{font-style:italic;color:var(--gold-light)}
-.wide-desc{font-size:14px;color:var(--gray);line-height:1.7}
-.detail-rows{display:flex;flex-direction:column;gap:16px;margin-top:8px}
-.detail-row{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:rgba(200,215,230,.65);line-height:1.6}
-.dr-icon{font-size:14px;flex-shrink:0;margin-top:2px}
-.dr-text strong{color:rgba(220,230,245,.85);font-weight:500}
-.dr-text a{color:var(--gold-light);text-decoration:none;border-bottom:1px solid rgba(201,146,42,.3)}
-.dr-text a:hover{border-color:var(--gold-light)}
-
-footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;position:relative;z-index:1}
+.btn-nav{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.35);color:var(--gold-light);padding:8px 20px;border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s;font-family:var(--sans)}
+.btn-nav:hover{background:rgba(201,146,42,.25)}
+.page-wrap{max-width:1040px;margin:0 auto;padding:128px 48px 100px;position:relative;z-index:1}
+.page-header{max-width:560px;margin-bottom:56px}
+.page-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,146,42,.1);border:1px solid rgba(201,146,42,.22);border-radius:100px;padding:6px 16px;margin-bottom:28px}
+.page-eyebrow span{font-family:var(--mono);font-size:11px;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase}
+h1.page-title{font-family:var(--serif);font-size:clamp(36px,5vw,60px);font-weight:400;line-height:1.1;letter-spacing:-1.2px;color:var(--white);margin-bottom:20px}
+h1.page-title em{font-style:italic;color:var(--gold-light)}
+.page-sub{font-size:17px;font-weight:300;color:rgba(202,214,230,.65);line-height:1.7}
+.notice-banner{background:linear-gradient(135deg,rgba(201,146,42,.07) 0%,rgba(201,146,42,.02) 100%);border:1px solid rgba(201,146,42,.2);border-radius:14px;padding:24px 28px;margin-bottom:56px;display:flex;align-items:flex-start;gap:16px}
+.notice-icon{width:40px;height:40px;background:rgba(201,146,42,.12);border:1px solid rgba(201,146,42,.25);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:2px}
+.notice-title{font-size:15px;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.3}
+.notice-text{font-size:14px;color:rgba(202,214,230,.65);line-height:1.65}
+.notice-text strong{color:rgba(202,214,230,.88);font-weight:500}
+.contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start}
+.info-block{margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06)}
+.info-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.info-label{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
+.info-title{font-family:var(--serif);font-size:20px;color:var(--white);margin-bottom:10px;letter-spacing:-.3px;line-height:1.3}
+.info-title em{font-style:italic;color:var(--gold-light)}
+.info-text{font-size:14px;color:rgba(202,214,230,.65);line-height:1.7}
+.info-text strong{color:rgba(202,214,230,.85);font-weight:500}
+.faq-item-mini{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer}
+.faq-item-mini:first-child{padding-top:0}
+.faq-item-mini:last-child{border-bottom:none}
+.faq-q-mini{font-size:13px;font-weight:500;color:rgba(202,214,230,.8);display:flex;align-items:center;justify-content:space-between;gap:12px;user-select:none;line-height:1.4}
+.faq-arrow-mini{color:var(--gold);font-size:10px;transition:transform .25s;flex-shrink:0}
+.faq-item-mini.open .faq-arrow-mini{transform:rotate(180deg)}
+.faq-a-mini{font-size:13px;color:rgba(138,154,175,.7);line-height:1.6;max-height:0;overflow:hidden;transition:max-height .35s ease,padding-top .25s}
+.faq-item-mini.open .faq-a-mini{max-height:200px;padding-top:10px}
+.rtb-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(46,204,138,.08);border:1px solid rgba(46,204,138,.2);border-radius:100px;padding:8px 16px;margin-top:20px}
+.rtb-dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:rtbP 2s ease-in-out infinite}
+@keyframes rtbP{0%,100%{opacity:1}50%{opacity:.35}}
+.rtb-text{font-size:12px;font-family:var(--mono);color:#4ECBA4;letter-spacing:.04em}
+.contact-form-wrap{background:var(--navy-mid);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:40px;position:sticky;top:100px}
+.form-title{font-family:var(--serif);font-size:22px;color:var(--white);margin-bottom:6px;letter-spacing:-.3px}
+.form-title em{font-style:italic;color:var(--gold-light)}
+.form-sub{font-size:13px;color:var(--gray);line-height:1.5;margin-bottom:28px}
+.field-group{margin-bottom:18px}
+.field-label{display:block;font-size:11px;font-weight:500;color:rgba(202,214,230,.55);margin-bottom:7px;font-family:var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.field-input,.field-select,.field-textarea{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:13px 16px;font-size:14px;color:var(--white);font-family:var(--sans);outline:none;transition:all .2s;-webkit-appearance:none}
+.field-input:focus,.field-select:focus,.field-textarea:focus{border-color:rgba(201,146,42,.5);background:rgba(255,255,255,.07);box-shadow:0 0 0 3px rgba(201,146,42,.1)}
+.field-input::placeholder,.field-textarea::placeholder{color:rgba(138,154,175,.4)}
+.field-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A9AAF' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px;cursor:pointer}
+.field-select option{background:var(--navy-mid)}
+.field-textarea{resize:vertical;min-height:110px;line-height:1.55}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-privacy{display:flex;align-items:flex-start;gap:10px;margin:20px 0 24px;font-size:12px;color:rgba(138,154,175,.55);line-height:1.5}
+.form-privacy a{color:rgba(201,146,42,.6);text-decoration:none;border-bottom:1px solid rgba(201,146,42,.2)}
+.form-privacy a:hover{color:var(--gold-light)}
+.priv-check{width:16px;height:16px;border:1.5px solid rgba(255,255,255,.15);border-radius:3px;cursor:pointer;flex-shrink:0;margin-top:1px;background:transparent;-webkit-appearance:none;transition:all .2s}
+.priv-check:checked{background:var(--gold);border-color:var(--gold)}
+.btn-submit{width:100%;background:linear-gradient(135deg,var(--gold) 0%,#A8761A 100%);color:var(--navy);border:none;border-radius:8px;padding:15px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:all .25s var(--expo)}
+.btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 28px rgba(201,146,42,.4)}
+.form-success{display:none;text-align:center;padding:16px 0}
+.form-success.show{display:block}
+.success-icon-wrap{width:60px;height:60px;background:rgba(46,204,138,.1);border:1px solid rgba(46,204,138,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:24px}
+.success-title{font-family:var(--serif);font-size:22px;color:var(--white);margin-bottom:10px;font-style:italic}
+.success-sub{font-size:14px;color:var(--gray);line-height:1.65;margin-bottom:24px}
+.btn-back-form{background:transparent;border:1px solid rgba(255,255,255,.1);color:var(--gray);border-radius:8px;padding:10px 20px;font-size:13px;cursor:pointer;font-family:var(--sans);transition:all .2s;margin-right:8px}
+.btn-back-form:hover{border-color:rgba(255,255,255,.2);color:var(--white)}
+.btn-home{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--gold),#A8761A);color:var(--navy);border:none;border-radius:8px;padding:10px 20px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s}
+.btn-home:hover{transform:translateY(-1px)}
+footer{padding:36px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;position:relative;z-index:1}
 .footer-copy{font-size:13px;color:rgba(138,154,175,.4)}
 .footer-links{display:flex;gap:24px}
 .footer-links a{font-size:13px;color:rgba(138,154,175,.4);text-decoration:none;transition:color .2s}
 .footer-links a:hover{color:var(--gray)}
-
-@media(max-width:768px){
-  nav{padding:16px 24px}
-  .contact-hero,.formation-notice{padding-left:24px;padding-right:24px}
-  .contact-hero{padding-top:56px;padding-bottom:40px}
-  .contact-grid{grid-template-columns:1fr;padding:32px 24px 80px}
-  .wide-card{grid-column:1}
-  .wide-inner{grid-template-columns:1fr}
-  footer{padding:24px;flex-direction:column;align-items:flex-start}
-}
+@media(max-width:900px){.contact-layout{grid-template-columns:1fr}.contact-form-wrap{position:static}.field-row{grid-template-columns:1fr}}
+@media(max-width:768px){nav{padding:16px 24px}.page-wrap{padding:100px 24px 80px}.contact-form-wrap{padding:28px 20px}footer{padding:28px 24px;flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
@@ -119,108 +107,140 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
     <div class="logo-mark">I</div>
     <span class="logo-text">Incentiv<span>AI</span></span>
   </a>
-  <a href="index.html" class="btn-back">← Torna al sito</a>
+  <a class="btn-nav" href="index.html">&#8592; Torna alla home</a>
 </nav>
 
-<div class="contact-hero">
-  <div class="hero-eyebrow"><div class="dot"></div>Siamo qui per te</div>
-  <h1>Hai una domanda?<br><em>Ti rispondiamo.</em></h1>
-  <p class="hero-sub">Che si tratti del servizio, di un bando specifico o di qualsiasi altro dubbio — non esitare a contattarci. Leggiamo ogni messaggio personalmente e rispondiamo con cura.</p>
-</div>
+<div class="page-wrap">
 
-<div class="formation-notice">
-  <div class="notice-card">
-    <div class="notice-icon">🏗️</div>
+  <div class="page-header">
+    <div class="page-eyebrow"><span>Contatti</span></div>
+    <h1 class="page-title">Siamo qui.<br><em>Sempre.</em></h1>
+    <p class="page-sub">Hai domande sul servizio, sui bandi, su come funziona l'analisi, o semplicemente vuoi saperne di più? Scrivici — ti risponderemo di persona.</p>
+  </div>
+
+  <div class="notice-banner">
+    <div class="notice-icon">&#127959;&#65039;</div>
     <div>
-      <div class="notice-title">Società in via di costituzione</div>
-      <div class="notice-text">IncentivAI è attualmente in fase di costituzione societaria formale. Questo non incide sulla nostra operatività né sulla qualità del servizio: siamo pienamente attivi, accompagniamo i potenziali clienti e operiamo nel pieno rispetto della normativa vigente. Per qualsiasi esigenza di tipo formale — o per chiarimenti sulla struttura societaria — restiamo a completa disposizione ai recapiti indicati qui di seguito.</div>
-    </div>
-  </div>
-</div>
-
-<div class="contact-grid">
-
-  <!-- EMAIL -->
-  <div class="contact-card cc-1">
-    <div class="card-icon-wrap icon-gold">📬</div>
-    <div class="card-type">Contatto principale</div>
-    <div class="card-title">Scrivici via email</div>
-    <div class="card-desc">Per domande sul servizio, sui bandi, su come funziona l'analisi o per qualsiasi chiarimento. Leggiamo ogni messaggio personalmente — niente bot, niente risposte automatiche generiche.</div>
-
-    <a class="contact-link" href="mailto:info@incentivai.it">
-      <div class="cl-icon">✉️</div>
-      <div class="cl-body">
-        <div class="cl-label">Email</div>
-        <div class="cl-value">info@incentivai.it</div>
-      </div>
-      <div class="cl-arrow">→</div>
-    </a>
-
-    <div class="response-tag">⏱ Risposta entro 48 ore lavorative</div>
-  </div>
-
-  <!-- FAQ -->
-  <div class="contact-card cc-2">
-    <div class="card-icon-wrap icon-blue">💬</div>
-    <div class="card-type">Domande frequenti</div>
-    <div class="card-title">Forse trovi già la risposta</div>
-    <div class="card-desc">Le domande che riceviamo più spesso, con risposta diretta.</div>
-
-    <div class="faq-list">
-      <div class="faq-item-c" onclick="tfc(this)">
-        <div class="fiq-q"><span>Il servizio è davvero gratuito?</span><span class="fiq-arr">▼</span></div>
-        <div class="fiq-a">Sì, durante la fase di accesso anticipato l'analisi del profilo e i primi risultati sono completamente gratuiti — nessuna carta di credito, nessun impegno. Il servizio completo con report PDF e guide alla domanda sarà disponibile al lancio entro il prossimo mese.</div>
-      </div>
-      <div class="faq-item-c" onclick="tfc(this)">
-        <div class="fiq-q"><span>I bandi nel database sono aggiornati?</span><span class="fiq-arr">▼</span></div>
-        <div class="fiq-a">Sì. Verifichiamo scadenze e nuove aperture ogni settimana su MiMIT, Invitalia e portali regionali. I bandi scaduti vengono rimossi automaticamente.</div>
-      </div>
-      <div class="faq-item-c" onclick="tfc(this)">
-        <div class="fiq-q"><span>Devo avere un commercialista per usarlo?</span><span class="fiq-arr">▼</span></div>
-        <div class="fiq-a">No. Il servizio è progettato per essere comprensibile anche senza esperienza in finanza agevolata. Fornisce le informazioni per capire cosa ti spetta e come ottenerlo — in autonomia.</div>
-      </div>
-      <div class="faq-item-c" onclick="tfc(this)">
-        <div class="fiq-q"><span>I dati che inserisco sono al sicuro?</span><span class="fiq-arr">▼</span></div>
-        <div class="fiq-a">Sì. Utilizziamo connessioni HTTPS cifrate, provider certificati GDPR e non vendiamo né condividiamo dati con terze parti per scopi commerciali. Consulta la Privacy Policy per tutti i dettagli.</div>
-      </div>
+      <div class="notice-title">IncentivAI è attualmente in fase di formazione societaria</div>
+      <div class="notice-text">Il progetto è operativo e il servizio è in fase di lancio, ma la struttura societaria è in corso di definizione secondo le procedure previste dalla normativa italiana. <strong>Questo non impatta in alcun modo il servizio offerto, la qualità delle risposte che riceverai, né la protezione dei tuoi dati personali.</strong> Il team è direttamente raggiungibile tramite il modulo qui accanto e risponde personalmente a ogni richiesta entro 48 ore lavorative.</div>
     </div>
   </div>
 
-  <!-- WIDE CARD -->
-  <div class="wide-card">
-    <div class="wide-inner">
-      <div>
-        <div class="wide-badge">// Chi siamo</div>
-        <div class="wide-title">Un progetto italiano<br><em>per le PMI italiane.</em></div>
-        <div class="wide-desc">IncentivAI nasce dalla consapevolezza che il 60% delle piccole e medie imprese italiane non accede agli incentivi pubblici — non per mancanza di requisiti, ma per mancanza di informazioni accessibili. Stiamo costruendo lo strumento che avremmo voluto avere. Un progetto giovane, concreto, con un obiettivo preciso: ridurre il gap tra i fondi disponibili e le imprese che ne hanno diritto.</div>
+  <div class="contact-layout">
+    <div>
+      <div class="info-block">
+        <div class="info-label">Chi siamo</div>
+        <div class="info-title">Un team dedicato<br><em>alle PMI italiane</em></div>
+        <div class="info-text">IncentivAI nasce per risolvere un problema concreto: le piccole e medie imprese italiane perdono ogni anno miliardi di euro in incentivi pubblici a cui avrebbero pieno diritto, semplicemente perché non sanno che esistono o non hanno le risorse per navigare la burocrazia. <strong>Siamo qui per cambiare questo.</strong></div>
       </div>
-      <div class="detail-rows">
-        <div class="detail-row">
-          <div class="dr-icon">📍</div>
-          <div class="dr-text"><strong>Sede operativa:</strong> Italia — attività svolta in modalità digitale su tutto il territorio nazionale.</div>
+
+      <div class="info-block">
+        <div class="info-label">Tempi di risposta</div>
+        <div class="info-title">Risposta <em>garantita</em></div>
+        <div class="info-text">Ogni messaggio viene letto e risposto personalmente — non da un sistema automatico. Ci impegniamo a rispondere entro 48 ore lavorative per qualsiasi tipo di richiesta, incluse quelle relative alla privacy e all'accesso ai dati.</div>
+        <div class="rtb-badge">
+          <div class="rtb-dot"></div>
+          <span class="rtb-text">Risposta entro 48 ore lavorative</span>
         </div>
-        <div class="detail-row">
-          <div class="dr-icon">⚖️</div>
-          <div class="dr-text"><strong>Status societario:</strong> Società in via di costituzione. Per esigenze formali o dati societari ufficiali, contattateci direttamente a <a href="mailto:info@incentivai.it">info@incentivai.it</a>.</div>
+      </div>
+
+      <div class="info-block">
+        <div class="info-label">Domande frequenti</div>
+        <div class="info-title">Prima di scrivere,<br><em>controlla qui</em></div>
+        <div>
+          <div class="faq-item-mini" onclick="toggleMini(this)">
+            <div class="faq-q-mini"><span>Il servizio costa qualcosa adesso?</span><span class="faq-arrow-mini">&#9660;</span></div>
+            <div class="faq-a-mini">No. Durante la fase di accesso anticipato il servizio è completamente gratuito. Non è richiesta nessuna carta di credito. Il pagamento sarà previsto solo al lancio della versione completa, previsto il prossimo mese.</div>
+          </div>
+          <div class="faq-item-mini" onclick="toggleMini(this)">
+            <div class="faq-q-mini"><span>Trattate correttamente i miei dati?</span><span class="faq-arrow-mini">&#9660;</span></div>
+            <div class="faq-a-mini">Sì. Utilizziamo provider certificati GDPR (Brevo per l'email, Netlify per l'hosting) e raccogliamo solo i dati strettamente necessari. Non vendiamo né condividiamo i tuoi dati con terze parti. Consulta la nostra Privacy Policy per tutti i dettagli.</div>
+          </div>
+          <div class="faq-item-mini" onclick="toggleMini(this)">
+            <div class="faq-q-mini"><span>I bandi nel database sono aggiornati?</span><span class="faq-arrow-mini">&#9660;</span></div>
+            <div class="faq-a-mini">Sì. Il database viene aggiornato settimanalmente verificando le informazioni su MiMIT, Invitalia, incentivi.gov.it e i portali regionali. I bandi scaduti vengono rimossi e quelli nuovi aggiunti entro 7 giorni dall'apertura ufficiale.</div>
+          </div>
+          <div class="faq-item-mini" onclick="toggleMini(this)">
+            <div class="faq-q-mini"><span>Siete disponibili per partnership?</span><span class="faq-arrow-mini">&#9660;</span></div>
+            <div class="faq-a-mini">Sì, siamo aperti a collaborazioni con commercialisti, consulenti di finanza agevolata e associazioni di categoria. Utilizza il form di contatto selezionando la categoria appropriata e ti risponderemo entro 48 ore.</div>
+          </div>
+          <div class="faq-item-mini" onclick="toggleMini(this)">
+            <div class="faq-q-mini"><span>Posso richiedere una consulenza personalizzata?</span><span class="faq-arrow-mini">&#9660;</span></div>
+            <div class="faq-a-mini">Siamo in fase di lancio, ma valutiamo ogni richiesta. Scrivici tramite il modulo descrivendo la tua situazione — per le richieste più complesse il team risponde direttamente. Con il piano Pro, disponibile al lancio, è incluso supporto prioritario.</div>
+          </div>
         </div>
-        <div class="detail-row">
-          <div class="dr-icon">🔒</div>
-          <div class="dr-text"><strong>Privacy e dati:</strong> GDPR-compliant. Nessun dato condiviso con terze parti a scopo commerciale. Dettagli nella <a href="privacy.html">Privacy Policy</a>.</div>
+      </div>
+    </div>
+
+    <div class="contact-form-wrap">
+      <div id="contactFormArea">
+        <div class="form-title">Scrivici.<br><em>Ti risponderemo di persona.</em></div>
+        <div class="form-sub">Compila il modulo — riceverai una risposta entro 48 ore lavorative direttamente nella tua casella email.</div>
+
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label">Nome</label>
+            <input class="field-input" type="text" placeholder="Mario" id="cName">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Cognome</label>
+            <input class="field-input" type="text" placeholder="Rossi" id="cSurname">
+          </div>
         </div>
-        <div class="detail-row">
-          <div class="dr-icon">📬</div>
-          <div class="dr-text"><strong>Contatto unico:</strong> <a href="mailto:info@incentivai.it">info@incentivai.it</a> — risposta garantita entro 48 ore lavorative per ogni richiesta.</div>
+
+        <div class="field-group">
+          <label class="field-label">Email</label>
+          <input class="field-input" type="email" placeholder="mario.rossi@impresa.it" id="cEmail">
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Motivo del contatto</label>
+          <select class="field-select" id="cReason">
+            <option value="" disabled selected>Seleziona una categoria</option>
+            <option value="analisi">Domanda sull'analisi dei bandi</option>
+            <option value="bando">Informazioni su un bando specifico</option>
+            <option value="servizio">Informazioni sul servizio e prezzi</option>
+            <option value="privacy">Richiesta relativa alla privacy / GDPR</option>
+            <option value="partnership">Proposta di partnership o collaborazione</option>
+            <option value="commercialista">Sono un commercialista — piano Studio</option>
+            <option value="altro">Altro</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">La tua domanda</label>
+          <textarea class="field-textarea" placeholder="Descrivi liberamente il tuo dubbio o la tua richiesta. Più dettagli ci fornisci, più precisa sarà la nostra risposta." id="cMessage"></textarea>
+        </div>
+
+        <div class="form-privacy">
+          <input type="checkbox" class="priv-check" id="cPrivacy">
+          <label for="cPrivacy">Ho letto e accetto la <a href="privacy.html" target="_blank">Privacy Policy</a>. Autorizzo il trattamento dei miei dati personali al fine di ricevere risposta alla mia richiesta.</label>
+        </div>
+
+        <button class="btn-submit" onclick="submitContact()">Invia il messaggio &#8594;</button>
+
+        <div style="margin-top:14px;text-align:center;font-size:11px;color:rgba(138,154,175,.35)">
+          Risposta garantita entro 48 ore lavorative &middot; Nessun uso commerciale dei dati
+        </div>
+      </div>
+
+      <div class="form-success" id="contactSuccess">
+        <div class="success-icon-wrap">&#9989;</div>
+        <div class="success-title">Messaggio ricevuto.</div>
+        <div class="success-sub">Abbiamo ricevuto la tua richiesta e la prenderemo in carico personalmente. Ti risponderemo entro 48 ore lavorative all'indirizzo email che hai indicato.</div>
+        <div>
+          <button class="btn-back-form" onclick="resetForm()">Invia un altro messaggio</button>
+          <a class="btn-home" href="index.html">Scopri i tuoi bandi &#8594;</a>
         </div>
       </div>
     </div>
   </div>
-
 </div>
 
 <footer>
   <div style="display:flex;align-items:center;gap:10px">
     <div class="logo-mark" style="width:26px;height:26px;font-size:13px">I</div>
-    <span class="footer-copy">© 2026 IncentivAI. Tutti i diritti riservati.</span>
+    <span class="footer-copy">&#169; 2026 IncentivAI. Tutti i diritti riservati.</span>
   </div>
   <div class="footer-links">
     <a href="privacy.html">Privacy Policy</a>
@@ -230,10 +250,37 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
 </footer>
 
 <script>
-function tfc(el){
-  const open=el.classList.contains('open');
-  document.querySelectorAll('.faq-item-c.open').forEach(i=>i.classList.remove('open'));
-  if(!open)el.classList.add('open');
+function toggleMini(el){
+  const isOpen=el.classList.contains('open');
+  document.querySelectorAll('.faq-item-mini.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)el.classList.add('open');
+}
+function submitContact(){
+  const name=document.getElementById('cName').value.trim();
+  const email=document.getElementById('cEmail').value.trim();
+  const reason=document.getElementById('cReason').value;
+  const message=document.getElementById('cMessage').value.trim();
+  const privacy=document.getElementById('cPrivacy').checked;
+  const errors=[];
+  if(!name)errors.push('cName');
+  if(!email||!email.includes('@'))errors.push('cEmail');
+  if(!reason)errors.push('cReason');
+  if(!message||message.length<10)errors.push('cMessage');
+  document.querySelectorAll('.field-input,.field-select,.field-textarea').forEach(el=>{el.style.borderColor='';el.style.boxShadow='';});
+  if(errors.length||!privacy){
+    errors.forEach(id=>{const el=document.getElementById(id);if(el){el.style.borderColor='rgba(224,82,82,.5)';el.style.boxShadow='0 0 0 3px rgba(224,82,82,.07)';}});
+    return;
+  }
+  console.log('Contact form:',{name,email,reason,message});
+  document.getElementById('contactFormArea').style.display='none';
+  document.getElementById('contactSuccess').classList.add('show');
+}
+function resetForm(){
+  ['cName','cSurname','cEmail','cMessage'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('cReason').value='';
+  document.getElementById('cPrivacy').checked=false;
+  document.getElementById('contactFormArea').style.display='block';
+  document.getElementById('contactSuccess').classList.remove('show');
 }
 </script>
 </body>

@@ -1141,8 +1141,7 @@ function lgSubmit(){
   }
   document.getElementById('lgFormWrap').style.display='none';
   document.getElementById('lgSuccess').classList.add('show');
-  console.log('Launch waitlist:', email, wp);
-  // TODO: POST to Brevo
+  subscribeEmail(email, 'wizard');
 }
 
 function wRestart(){
@@ -1171,7 +1170,7 @@ function handleSubmit(inputId,rowId,successId,perksId){
   document.getElementById(rowId).classList.add('hide');
   if(perksId)document.getElementById(perksId).classList.add('hide');
   document.getElementById(successId).classList.add('show');
-  console.log('Whitelist:',email);
+  subscribeEmail(email, 'hero');
 }
 document.getElementById('emailInput') && document.getElementById('emailInput').addEventListener('keydown',e=>{if(e.key==='Enter')handleSubmit('emailInput','formRow','formSuccess','wlPerks');});
 document.getElementById('ctaEmail') && document.getElementById('ctaEmail').addEventListener('keydown',e=>{if(e.key==='Enter')handleCtaSubmit();});
@@ -1181,11 +1180,25 @@ function handleCtaSubmit(){
   if(!email||!email.includes('@')){input.style.borderColor='rgba(232,80,80,.5)';input.style.boxShadow='0 0 0 3px rgba(232,80,80,.1)';setTimeout(()=>{input.style.borderColor='';input.style.boxShadow='';},2000);return;}
   document.getElementById('ctaFormWrap').style.display='none';
   document.getElementById('ctaSuccess').style.display='block';
-  console.log('CTA waitlist:',email);
+  subscribeEmail(email, 'cta');
 }
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
 
 wUpdateUI();
+
+// ── MAILERLITE SUBSCRIPTION ──
+async function subscribeEmail(email, source) {
+  try {
+    await fetch('/.netlify/functions/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source })
+    });
+  } catch (e) {
+    // Silenzioso — l'utente ha già visto il messaggio di successo
+    console.error('Subscribe error:', e);
+  }
+}
 </script>
 </body>
 </html>

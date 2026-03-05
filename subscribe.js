@@ -35,7 +35,7 @@ exports.handler = async function(event) {
         fields: {
           source: source
         },
-        groups: [], // MailerLite aggiungerà alla lista principale
+        groups: ["181098245774116544"],
         status: 'active'
       })
     });

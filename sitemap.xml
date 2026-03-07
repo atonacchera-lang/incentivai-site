@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://incentivai.it/</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://incentiviai.it/</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://incentivai.it/chi-siamo.html</loc>
-    <lastmod>2026-03-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://incentivai.it/risorse.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://incentiviai.it/blog/</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://incentivai.it/contatti.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://incentiviai.it/blog/nuova-sabatini-2026.html</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://incentiviai.it/chi-siamo.html</loc>
+    <lastmod>2026-03-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://incentiviai.it/contatti.html</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://incentivai.it/privacy.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://incentiviai.it/privacy.html</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://incentivai.it/cookie.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <loc>https://incentiviai.it/cookie.html</loc>
+    <lastmod>2026-03-07</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

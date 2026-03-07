@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Guide sui Bandi Pubblici per PMI | IncentivAI</title>
+<meta name="description" content="Guide gratuite su bandi pubblici, incentivi e agevolazioni per PMI italiane. Nuova Sabatini, Transizione 5.0, bandi regionali e molto altro.">
+<link rel="canonical" href="https://incentivai.it/blog/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0E1B3D;--navy-mid:#162348;--navy-light:#1E3060;
+  --gold:#C9922A;--gold-light:#E8B44A;--gold-pale:#F5D98A;
+  --white:#FAFAF7;--gray:#8A9AAF;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+  --expo:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--navy);color:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;opacity:.022;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:linear-gradient(to bottom,rgba(14,27,61,.95),transparent);transition:all .4s}
+nav.scrolled{padding:14px 48px;background:rgba(14,27,61,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,146,42,.1)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-mark{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold-pale));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px;color:var(--navy)}
+.logo-text{font-size:17px;font-weight:600;color:var(--white);letter-spacing:-.3px}
+.logo-text span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-link{font-size:14px;color:var(--gray);text-decoration:none;transition:color .2s}
+.nav-link:hover,.nav-link.active{color:var(--white)}
+.btn-nav{background:rgba(201,146,42,.15);border:1px solid rgba(201,146,42,.35);color:var(--gold-light);padding:8px 20px;border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;transition:all .2s;font-family:var(--sans)}
+.btn-nav:hover{background:rgba(201,146,42,.25)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+.hero{padding:140px 48px 64px;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,146,42,.1);border:1px solid rgba(201,146,42,.22);border-radius:100px;padding:6px 16px;margin-bottom:28px;font-family:var(--mono);font-size:11px;color:var(--gold-light);letter-spacing:.06em;text-transform:uppercase;animation:fadeUp .6s var(--expo) forwards}
+.dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.75)}}
+h1{font-family:var(--serif);font-size:clamp(38px,5vw,58px);font-weight:400;line-height:1.08;letter-spacing:-1.2px;margin-bottom:16px;animation:fadeUp .7s var(--expo) .1s both}
+h1 em{font-style:italic;color:var(--gold-light)}
+.hero-sub{font-size:17px;font-weight:300;color:rgba(200,215,230,.65);line-height:1.7;max-width:560px;animation:fadeUp .7s var(--expo) .2s both}
+
+/* FEATURED */
+.featured-section{padding:0 48px 48px;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.featured-card{background:linear-gradient(135deg,rgba(201,146,42,.08),var(--navy-mid));border:1px solid rgba(201,146,42,.2);border-radius:18px;padding:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;text-decoration:none;color:inherit;transition:all .3s var(--expo);position:relative;overflow:hidden}
+.featured-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-pale))}
+.featured-card:hover{border-color:rgba(201,146,42,.35);transform:translateY(-3px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.fc-badge{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.fc-badge::before{content:'';width:20px;height:1px;background:var(--gold)}
+.fc-title{font-family:var(--serif);font-size:clamp(24px,3vw,36px);color:var(--white);line-height:1.18;margin-bottom:14px;letter-spacing:-.5px}
+.fc-title em{font-style:italic;color:var(--gold-light)}
+.fc-desc{font-size:14px;color:rgba(200,215,230,.65);line-height:1.7;margin-bottom:24px}
+.fc-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+.fc-tag{font-size:11px;font-family:var(--mono);padding:4px 10px;border-radius:4px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(200,215,230,.6)}
+.fc-time{font-size:12px;color:var(--gray)}
+.btn-read{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),#A8761A);color:var(--navy);border-radius:8px;padding:12px 22px;font-size:14px;font-weight:700;font-family:var(--sans);transition:all .2s}
+.fc-highlights{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:24px}
+.fch-label{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px}
+.fch-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;font-size:13px;color:rgba(200,215,230,.7);line-height:1.5}
+.fch-item:last-child{margin-bottom:0}
+.fch-arrow{color:var(--gold-light);flex-shrink:0;font-size:11px;margin-top:2px}
+
+/* GRID */
+.grid-section{padding:0 48px 100px;max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.section-divider{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.section-divider-label{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.section-divider-line{flex:1;height:1px;background:rgba(255,255,255,.06)}
+.articles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.article-card{background:var(--navy-mid);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:28px;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:all .3s var(--expo);position:relative;overflow:hidden}
+.article-card::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-pale));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--expo)}
+.article-card:hover{border-color:rgba(201,146,42,.2);transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.3)}
+.article-card:hover::after{transform:scaleX(1)}
+.article-card.coming-soon{opacity:.5;pointer-events:none}
+.ac-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.ac-category{font-family:var(--mono);font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+.cat-nazionale{background:rgba(201,146,42,.1);color:var(--gold-light);border:1px solid rgba(201,146,42,.2)}
+.cat-regionale{background:rgba(90,158,232,.1);color:#7AB8F5;border:1px solid rgba(90,158,232,.2)}
+.cat-tematico{background:rgba(46,204,138,.1);color:#4ECBA4;border:1px solid rgba(46,204,138,.2)}
+.cat-guida{background:rgba(155,93,229,.1);color:#C4A8FF;border:1px solid rgba(155,93,229,.2)}
+.ac-status-live{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:3px;background:rgba(46,204,138,.1);color:#4ECBA4;border:1px solid rgba(46,204,138,.2)}
+.ac-status-soon{font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:3px;background:rgba(255,255,255,.04);color:rgba(138,154,175,.6);border:1px solid rgba(255,255,255,.08)}
+.ac-title{font-size:16px;font-weight:600;color:var(--white);line-height:1.35;margin-bottom:10px;letter-spacing:-.2px;flex:1}
+.ac-desc{font-size:13px;color:var(--gray);line-height:1.6;margin-bottom:20px}
+.ac-footer{display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:16px;border-top:1px solid rgba(255,255,255,.05)}
+.ac-read-time{font-size:11px;color:rgba(138,154,175,.5);font-family:var(--mono)}
+.ac-link{font-size:12px;color:var(--gold-light);font-weight:500;display:flex;align-items:center;gap:4px;transition:gap .2s}
+.article-card:hover .ac-link{gap:8px}
+.ac-link-soon{font-size:12px;color:rgba(138,154,175,.4)}
+
+/* CTA */
+.cta-strip{margin:0 48px 80px;background:linear-gradient(135deg,rgba(201,146,42,.08),rgba(201,146,42,.03));border:1px solid rgba(201,146,42,.2);border-radius:16px;padding:40px 48px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;position:relative;z-index:1;max-width:1004px;margin-left:auto;margin-right:auto}
+.cta-strip h3{font-family:var(--serif);font-size:26px;color:var(--white);line-height:1.25;margin-bottom:8px;letter-spacing:-.3px}
+.cta-strip h3 em{font-style:italic;color:var(--gold-light)}
+.cta-strip p{font-size:14px;color:var(--gray);line-height:1.55}
+.btn-cta{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--gold),#A8761A);color:var(--navy);border-radius:8px;padding:14px 26px;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;font-family:var(--sans);white-space:nowrap}
+.btn-cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,146,42,.4)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s var(--expo),transform .6s var(--expo)}
+.reveal.visible{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
+
+footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;position:relative;z-index:1}
+.footer-copy{font-size:13px;color:rgba(138,154,175,.4)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:rgba(138,154,175,.4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--gray)}
+
+@media(max-width:900px){.featured-card,.articles-grid{grid-template-columns:1fr}.fc-highlights{display:none}}
+@media(max-width:768px){nav,nav.scrolled{padding:16px 24px}.nav-links .nav-link{display:none}.hero,.featured-section,.grid-section{padding-left:24px;padding-right:24px}.hero{padding-top:110px}.articles-grid{grid-template-columns:1fr}.cta-strip{margin:0 24px 60px;padding:28px 24px;flex-direction:column;align-items:flex-start}footer{padding:24px;flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="logo" href="/index.html">
+    <div class="logo-mark">I</div>
+    <span class="logo-text">Incentiv<span>AI</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="/index.html" class="nav-link">Home</a>
+    <a href="/chi-siamo.html" class="nav-link">Chi siamo</a>
+    <a href="/blog/" class="nav-link active">Blog</a>
+    <a href="/contatti.html" class="nav-link">Contatti</a>
+    <a href="/index.html#whitelist" class="btn-nav">Accesso anticipato →</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow"><div class="dot"></div>Guide gratuite per PMI</div>
+  <h1>Tutto quello che devi sapere<br><em>sui bandi pubblici.</em></h1>
+  <p class="hero-sub">Guide pratiche scritte per chi gestisce un'impresa. Ogni articolo è verificato su fonti ufficiali e aggiornato regolarmente.</p>
+</div>
+
+<div class="featured-section reveal">
+  <a href="/blog/nuova-sabatini-2026.html" class="featured-card">
+    <div>
+      <div class="fc-badge">Articolo in evidenza · Nazionale</div>
+      <div class="fc-title">Nuova Sabatini 2026:<br><em>la guida completa per le PMI</em></div>
+      <div class="fc-desc">Il bando più utilizzato dalle PMI italiane spiegato dall'inizio alla fine: requisiti, importi, documenti e come evitare i 5 errori più comuni.</div>
+      <div class="fc-meta">
+        <span class="fc-tag">Finanziamento agevolato</span>
+        <span class="fc-tag">Tutti i settori</span>
+        <span class="fc-tag">fino a €4M</span>
+        <span class="fc-time">⏱ 12 min di lettura</span>
+      </div>
+      <div class="btn-read">Leggi la guida →</div>
+    </div>
+    <div class="fc-highlights">
+      <div class="fch-label">Cosa trovi nell'articolo</div>
+      <div class="fch-item"><span class="fch-arrow">→</span><span>Chi può accedere: requisiti PMI per settore e dimensione</span></div>
+      <div class="fch-item"><span class="fch-arrow">→</span><span>Importi e tassi agevolati: quanto puoi ottenere</span></div>
+      <div class="fch-item"><span class="fch-arrow">→</span><span>Documenti necessari: lista completa con spiegazione</span></div>
+      <div class="fch-item"><span class="fch-arrow">→</span><span>Come presentare la domanda sul portale MiMIT</span></div>
+      <div class="fch-item"><span class="fch-arrow">→</span><span>Cumulabilità con Transizione 5.0</span></div>
+    </div>
+  </a>
+</div>
+
+<div class="grid-section">
+  <div class="section-divider reveal">
+    <span class="section-divider-label">Prossime guide</span>
+    <div class="section-divider-line"></div>
+    <span style="font-family:var(--mono);font-size:11px;color:var(--gray);white-space:nowrap">2 a settimana</span>
+  </div>
+  <div class="articles-grid">
+
+    <div class="article-card coming-soon">
+      <div class="ac-top"><span class="ac-category cat-nazionale">Nazionale</span><span class="ac-status-soon">In arrivo</span></div>
+      <div class="ac-title">Transizione 5.0: credito d'imposta per digitale e green</div>
+      <div class="ac-desc">Differenze da Industria 4.0, il requisito del risparmio energetico e come cumularlo con Nuova Sabatini.</div>
+      <div class="ac-footer"><span class="ac-read-time">~10 min</span><span class="ac-link-soon">Settimana 2</span></div>
+    </div>
+
+    <div class="article-card coming-soon">
+      <div class="ac-top"><span class="ac-category cat-regionale">Regionale</span><span class="ac-status-soon">In arrivo</span></div>
+      <div class="ac-title">Bandi PMI Lombardia 2026: la guida completa</div>
+      <div class="ac-desc">Gli incentivi regionali lombardi più importanti e come combinarli con i bandi nazionali.</div>
+      <div class="ac-footer"><span class="ac-read-time">~10 min</span><span class="ac-link-soon">Settimana 2</span></div>
+    </div>
+
+    <div class="article-card coming-soon">
+      <div class="ac-top"><span class="ac-category cat-tematico">Internazionalizzazione</span><span class="ac-status-soon">In arrivo</span></div>
+      <div class="ac-title">SIMEST Fondo 394: come finanziare l'export</div>
+      <div class="ac-desc">Il fondo più sottoutilizzato per le PMI che esportano: importi, requisiti e quota a fondo perduto.</div>
+      <div class="ac-footer"><span class="ac-read-time">~9 min</span><span class="ac-link-soon">Settimana 3</span></div>
+    </div>
+
+    <div class="article-card coming-soon">
+      <div class="ac-top"><span class="ac-category cat-guida">Strategia</span><span class="ac-status-soon">In arrivo</span></div>
+      <div class="ac-title">Cumulare Nuova Sabatini e Transizione 5.0: guida pratica</div>
+      <div class="ac-desc">Si possono cumulare? Quale domanda presentare prima? Come massimizzare entrambi.</div>
+      <div class="ac-footer"><span class="ac-read-time">~8 min</span><span class="ac-link-soon">Settimana 3</span></div>
+    </div>
+
+    <div class="article-card coming-soon">
+      <div class="ac-top"><span class="ac-category cat-tematico">Risorse umane</span><span class="ac-status-soon">In arrivo</span></div>
+      <div class="ac-title">Esonero contributivo under 36: €6.000 per assunzione</div>
+      <div class="ac-desc">Come azzerare i contributi INPS per 36 mesi e il calcolo del risparmio reale.</div>
+      <div class="ac-footer"><span class="ac-read-time">~8 min</span><span class="ac-link-soon">Settimana 4</span></div>
+    </div>
+
+    <div class="article-card coming-soon">
+      <div class="ac-top"><span class="ac-category cat-tematico">Credito</span><span class="ac-status-soon">In arrivo</span></div>
+      <div class="ac-title">Fondo di Garanzia PMI: accedere al credito senza garanzie</div>
+      <div class="ac-desc">Come funziona la garanzia statale, come richiederla e quando conviene davvero.</div>
+      <div class="ac-footer"><span class="ac-read-time">~9 min</span><span class="ac-link-soon">Settimana 5</span></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="cta-strip reveal">
+  <div>
+    <h3>Non aspettare le guide.<br><em>Scopri i tuoi bandi adesso.</em></h3>
+    <p>L'analisi personalizzata è già disponibile — 5 domande, risultati immediati, gratis.</p>
+  </div>
+  <a href="/index.html" class="btn-cta">Fai l'analisi gratuita →</a>
+</div>
+
+<footer>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="logo-mark" style="width:26px;height:26px;font-size:13px">I</div>
+    <span class="footer-copy">© 2026 IncentivAI. Tutti i diritti riservati.</span>
+  </div>
+  <div class="footer-links">
+    <a href="/chi-siamo.html">Chi siamo</a>
+    <a href="/blog/">Blog</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/cookie.html">Cookie</a>
+    <a href="/contatti.html">Contatti</a>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40)});
+const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible')}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

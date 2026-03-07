@@ -411,6 +411,23 @@ footer{padding:36px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
   .hero-cta-group{flex-direction:column;align-items:center}
 }
 </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '692317152616584');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -423,7 +440,7 @@ footer{padding:36px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
   <div class="nav-links">
     <a href="#come-funziona" class="nav-link">Come funziona</a>
     <a href="chi-siamo.html" class="nav-link">Chi siamo</a>
-    <a href="/blog/" class="nav-link">Risorse</a>
+    <a href="risorse.html" class="nav-link">Risorse</a>
     <a href="contatti.html" class="nav-link">Contatti</a>
     <button class="btn-nav" onclick="openWizard()">Scopri adesso →</button>
   </div>
@@ -735,7 +752,7 @@ footer{padding:36px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
   </div>
   <div class="footer-links">
     <a href="chi-siamo.html">Chi siamo</a>
-    <a href="/blog/">Risorse</a>
+    <a href="risorse.html">Risorse</a>
     <a href="privacy.html">Privacy Policy</a>
     <a href="cookie.html">Cookie</a>
     <a href="contatti.html">Contatti</a>

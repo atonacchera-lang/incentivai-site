@@ -193,6 +193,46 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
 .btn-wiz-next:hover{transform:translateY(-1px)}
 .btn-wiz-next:disabled{opacity:.4;cursor:not-allowed;transform:none}
 
+
+#wizOverlay{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+#wizOverlay.open{opacity:1;pointer-events:all}
+.wiz-backdrop{position:absolute;inset:0;background:rgba(7,14,30,.85);backdrop-filter:blur(8px)}
+.wizard{position:relative;z-index:2;width:100%;max-width:800px;max-height:92vh;overflow:hidden;border-radius:20px;background:#162348;border:1px solid rgba(201,146,42,.18);box-shadow:0 40px 100px rgba(0,0,0,.7);transform:translateY(28px) scale(.97);transition:transform .45s cubic-bezier(0.16,1,0.3,1);display:flex;flex-direction:column}
+#wizOverlay.open .wizard{transform:none}
+.wiz-progress{height:3px;background:rgba(255,255,255,.06);flex-shrink:0}
+.wiz-bar{height:100%;background:linear-gradient(90deg,#C9922A,#F5D98A);transition:width .4s cubic-bezier(0.16,1,0.3,1)}
+.wiz-header{padding:28px 36px 0;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.wiz-step-label{font-family:'DM Mono',monospace;font-size:11px;color:#8A9AAF}
+.wiz-close{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);border:none;color:#8A9AAF;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.wiz-close:hover{background:rgba(255,255,255,.12);color:#FAFAF7}
+.wiz-body{padding:32px 36px;overflow-y:auto;flex:1}
+.wiz-q{font-family:'Instrument Serif',Georgia,serif;font-size:clamp(22px,3vw,30px);color:#FAFAF7;line-height:1.2;margin-bottom:10px;letter-spacing:-.5px}
+.wiz-hint{font-size:14px;color:#8A9AAF;margin-bottom:28px}
+.wstep{display:none}
+.wstep.active{display:block;animation:wstepIn .38s cubic-bezier(0.16,1,0.3,1)}
+@keyframes wstepIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
+.wiz-options{display:grid;gap:10px}
+.wiz-options.cols2{grid-template-columns:1fr 1fr}
+.wiz-opt{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px 20px;cursor:pointer;transition:all .2s;text-align:left;color:#FAFAF7;font-size:15px;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:12px}
+.wiz-opt:hover{border-color:rgba(201,146,42,.35);background:rgba(201,146,42,.06)}
+.wiz-opt.selected{border-color:#C9922A;background:rgba(201,146,42,.1);color:#E8B44A}
+.wiz-opt-icon{font-size:20px;flex-shrink:0}
+.wiz-opt-label{font-weight:500;line-height:1.3}
+.wiz-opt-sub{font-size:12px;color:#8A9AAF;margin-top:3px;font-weight:400}
+.wiz-email-wrap{margin-top:8px}
+.wiz-email-label{font-size:13px;color:#8A9AAF;margin-bottom:10px}
+.wiz-email-row{display:flex;gap:8px;flex-wrap:wrap}
+.wiz-email-input{flex:1;min-width:220px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:14px 18px;color:#FAFAF7;font-size:15px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s}
+.wiz-email-input:focus{border-color:rgba(201,146,42,.5)}
+.wiz-email-input::placeholder{color:#8A9AAF}
+.btn-wiz-submit{background:linear-gradient(135deg,#C9922A,#A8761A);color:#0E1B3D;border:none;border-radius:10px;padding:14px 24px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:all .2s}
+.btn-wiz-submit:hover{opacity:.9}
+.wiz-footer{padding:20px 36px 28px;border-top:1px solid rgba(255,255,255,.06);flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.wiz-back{background:none;border:none;color:#8A9AAF;cursor:pointer;font-size:14px;font-family:'DM Sans',sans-serif;padding:8px 0;transition:color .2s}
+.wiz-back:hover{color:#FAFAF7}
+.btn-wiz-next{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#C9922A,#A8761A);color:#0E1B3D;border:none;border-radius:10px;padding:14px 26px;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.btn-wiz-next:hover{transform:translateY(-1px)}
+.btn-wiz-next:disabled{opacity:.4;cursor:not-allowed;transform:none}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -371,6 +411,16 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
   </div>
   <button onclick="openWizard()" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#C9922A,#A8761A);color:#0E1B3D;border:none;border-radius:8px;padding:13px 22px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap">Scopri adesso →</button>
 </div>
+
+    <!-- Article CTA Banner -->
+    <div style="background:linear-gradient(135deg,rgba(201,146,42,.1),rgba(201,146,42,.04));border:1px solid rgba(201,146,42,.22);border-radius:14px;padding:24px 32px;margin:0 0 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Analisi gratuita</div>
+        <div style="font-size:16px;font-weight:600;color:var(--white);margin-bottom:4px">Hai diritto a questi fondi?</div>
+        <div style="font-size:13px;color:var(--gray)">Scopri subito quali incentivi puoi richiedere — 5 domande, 3 minuti.</div>
+      </div>
+      <button onclick="openWizard()" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#C9922A,#A8761A);color:#0E1B3D;border:none;border-radius:8px;padding:13px 22px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap">Scopri adesso →</button>
+    </div>
 
     <div class="article-content">
 
@@ -579,6 +629,120 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
   </aside>
 </div>
 
+<div id="wizOverlay">
+  <div class="wiz-backdrop" onclick="closeWizard()"></div>
+  <div class="wizard">
+
+    <div class="wiz-progress"><div class="wiz-bar" id="wizBar"></div></div>
+
+    <div class="wiz-head">
+      <div class="wiz-head-logo">
+        <div class="wiz-head-mark">I</div>
+        <span class="wiz-head-name">Incentiv<span>AI</span></span>
+      </div>
+      <span class="wiz-step-label" id="wizStepLabel">Domanda 1 di 5</span>
+      <button class="btn-wiz-close" onclick="closeWizard()">✕</button>
+    </div>
+
+    <div class="wiz-body" id="wizBody">
+
+      <!-- S1: Settore -->
+      <div class="wstep active" id="ws1">
+        <div class="wq">In quale <em>settore</em> opera la tua impresa?</div>
+        <div class="whint">Seleziona quello più vicino alla tua attività principale.</div>
+        <div class="opt-grid g2" id="g1">
+          <div class="wopt" onclick="wpick(this,'settore','manifattura','g1')"><div class="wopt-icon">🏭</div><div class="wopt-body"><div class="wopt-label">Manifattura & Produzione</div><div class="wopt-sub">Lavorazioni, macchinari, assemblaggio</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'settore','commercio','g1')"><div class="wopt-icon">🛍️</div><div class="wopt-body"><div class="wopt-label">Commercio al dettaglio</div><div class="wopt-sub">Negozi, e-commerce, distribuzione</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'settore','tech','g1')"><div class="wopt-icon">💻</div><div class="wopt-body"><div class="wopt-label">Software & ICT</div><div class="wopt-sub">Sviluppo software, SaaS, digitale</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'settore','servizi','g1')"><div class="wopt-icon">📋</div><div class="wopt-body"><div class="wopt-label">Servizi alle imprese</div><div class="wopt-sub">Consulenza, contabilità, marketing</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'settore','artigianato','g1')"><div class="wopt-icon">🔨</div><div class="wopt-body"><div class="wopt-label">Artigianato</div><div class="wopt-sub">Lavorazioni manuali, edilizia, impiantistica</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'settore','ristorazione','g1')"><div class="wopt-icon">🍽️</div><div class="wopt-body"><div class="wopt-label">Ristorazione & Ospitalità</div><div class="wopt-sub">Ristoranti, hotel, turismo</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'settore','agricoltura','g1')"><div class="wopt-icon">🌿</div><div class="wopt-body"><div class="wopt-label">Agricoltura & Agroalimentare</div><div class="wopt-sub">Coltivazione, trasformazione</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'settore','altro','g1')"><div class="wopt-icon">🔷</div><div class="wopt-body"><div class="wopt-label">Altro settore</div><div class="wopt-sub">Non rientra nelle categorie sopra</div></div><div class="wopt-ck"></div></div>
+        </div>
+      </div>
+
+      <!-- S2: Area -->
+      <div class="wstep" id="ws2">
+        <div class="wq">Dove ha sede<br><em>la tua impresa?</em></div>
+        <div class="whint">Molti bandi hanno maggiorazioni o sono dedicati a specifiche aree geografiche.</div>
+        <div class="opt-grid g2" id="g2">
+          <div class="wopt" onclick="wpick(this,'area','nord-ovest','g2')"><div class="wopt-icon">🏔️</div><div class="wopt-body"><div class="wopt-label">Nord-Ovest</div><div class="wopt-sub">Lombardia, Piemonte, Liguria, VdA</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'area','nord-est','g2')"><div class="wopt-icon">🏛️</div><div class="wopt-body"><div class="wopt-label">Nord-Est</div><div class="wopt-sub">Veneto, Emilia-Romagna, Friuli, Trentino</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'area','centro','g2')"><div class="wopt-icon">🏰</div><div class="wopt-body"><div class="wopt-label">Centro</div><div class="wopt-sub">Toscana, Lazio, Umbria, Marche, Abruzzo</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'area','sud','g2')"><div class="wopt-icon">☀️</div><div class="wopt-body"><div class="wopt-label">Sud</div><div class="wopt-sub">Campania, Puglia, Calabria, Basilicata</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'area','isole','g2')"><div class="wopt-icon">🌊</div><div class="wopt-body"><div class="wopt-label">Isole</div><div class="wopt-sub">Sicilia, Sardegna</div></div><div class="wopt-ck"></div></div>
+        </div>
+      </div>
+
+      <!-- S3: Dipendenti -->
+      <div class="wstep" id="ws3">
+        <div class="wq">Quanti <em>dipendenti</em> ha la tua impresa?</div>
+        <div class="whint">Include collaboratori a tempo pieno e part-time.</div>
+        <div class="opt-grid g2" id="g3">
+          <div class="wopt" onclick="wpick(this,'dipendenti','1','g3')"><div class="wopt-icon">👤</div><div class="wopt-body"><div class="wopt-label">Solo io</div><div class="wopt-sub">Imprenditore individuale</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'dipendenti','2-5','g3')"><div class="wopt-icon">👥</div><div class="wopt-body"><div class="wopt-label">2 – 5 persone</div><div class="wopt-sub">Microimpresa</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'dipendenti','6-15','g3')"><div class="wopt-icon">🏢</div><div class="wopt-body"><div class="wopt-label">6 – 15 persone</div><div class="wopt-sub">Piccola impresa</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'dipendenti','16-49','g3')"><div class="wopt-icon">🏗️</div><div class="wopt-body"><div class="wopt-label">16 – 49 persone</div><div class="wopt-sub">Piccola-media impresa</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'dipendenti','50-250','g3')"><div class="wopt-icon">🏭</div><div class="wopt-body"><div class="wopt-label">50 – 250 persone</div><div class="wopt-sub">Media impresa</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'dipendenti','250+','g3')"><div class="wopt-icon">🌐</div><div class="wopt-body"><div class="wopt-label">Più di 250</div><div class="wopt-sub">Grande impresa</div></div><div class="wopt-ck"></div></div>
+        </div>
+      </div>
+
+      <!-- S4: Anni -->
+      <div class="wstep" id="ws4">
+        <div class="wq">Da quanti anni<br><em>è attiva</em> la tua impresa?</div>
+        <div class="whint">Incide sull'accesso a bandi per startup, imprese giovani e ZES Mezzogiorno.</div>
+        <div class="opt-grid g2" id="g4">
+          <div class="wopt" onclick="wpick(this,'anni','0-1','g4')"><div class="wopt-icon">🌱</div><div class="wopt-body"><div class="wopt-label">Meno di 1 anno</div><div class="wopt-sub">Startup o impresa neonata</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'anni','1-3','g4')"><div class="wopt-icon">🌿</div><div class="wopt-body"><div class="wopt-label">1 – 3 anni</div><div class="wopt-sub">Fase di crescita iniziale</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'anni','3-10','g4')"><div class="wopt-icon">🌳</div><div class="wopt-body"><div class="wopt-label">3 – 10 anni</div><div class="wopt-sub">Impresa consolidata</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wpick(this,'anni','10+','g4')"><div class="wopt-icon">🏛️</div><div class="wopt-body"><div class="wopt-label">Più di 10 anni</div><div class="wopt-sub">Impresa matura</div></div><div class="wopt-ck"></div></div>
+        </div>
+      </div>
+
+      <!-- S5: Obiettivi (multi) -->
+      <div class="wstep" id="ws5">
+        <div class="wq">Cosa hai in mente<br><em>per la tua impresa?</em></div>
+        <div class="whint">Puoi selezionarne più di uno.</div>
+        <div class="opt-grid g2" id="g5">
+          <div class="wopt" onclick="wmulti(this,'macchinari','g5')"><div class="wopt-icon">⚙️</div><div class="wopt-body"><div class="wopt-label">Comprare macchinari o attrezzature</div><div class="wopt-sub">Impianti, strumentazione, veicoli</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wmulti(this,'digitale','g5')"><div class="wopt-icon">💡</div><div class="wopt-body"><div class="wopt-label">Digitalizzare l'impresa</div><div class="wopt-sub">Software, sito, e-commerce, CRM</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wmulti(this,'assumere','g5')"><div class="wopt-icon">👔</div><div class="wopt-body"><div class="wopt-label">Assumere personale</div><div class="wopt-sub">Nuove figure, giovani, donne</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wmulti(this,'internazionalizzare','g5')"><div class="wopt-icon">🌍</div><div class="wopt-body"><div class="wopt-label">Espandermi all'estero</div><div class="wopt-sub">Export, fiere, e-commerce estero</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wmulti(this,'sostenibilita','g5')"><div class="wopt-icon">🌿</div><div class="wopt-body"><div class="wopt-label">Efficienza energetica & Green</div><div class="wopt-sub">Pannelli, risparmio, certificazioni</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wmulti(this,'ricerca','g5')"><div class="wopt-icon">🔬</div><div class="wopt-body"><div class="wopt-label">Ricerca & Sviluppo</div><div class="wopt-sub">Nuovi prodotti, brevetti, innovazione</div></div><div class="wopt-ck"></div></div>
+          <div class="wopt" onclick="wmulti(this,'niente','g5')" id="woptNiente"><div class="wopt-icon">🗺️</div><div class="wopt-body"><div class="wopt-label">Non ho nulla in mente — dimmi tu</div><div class="wopt-sub">Suggeriscimi le opportunità migliori</div></div><div class="wopt-ck"></div></div>
+        </div>
+      </div>
+
+      <!-- GENERATING -->
+      <div class="wstep" id="wsGen">
+        <div class="wgen">
+          <div class="wgen-icon">⚡</div>
+          <div class="wgen-title">Analizzo il profilo della tua impresa…</div>
+          <div id="gLines">
+            <div class="wgen-line" id="gl1">Profilo aziendale caricato</div>
+            <div class="wgen-line" id="gl2">Scansiono 30+ bandi attivi…</div>
+            <div class="wgen-line" id="gl3">Calcolo score di compatibilità…</div>
+            <div class="wgen-line" id="gl4">Identifico opportunità non ovvie…</div>
+            <div class="wgen-line" id="gl5">Preparo la tua analisi…</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="wstep" id="wsRes"></div>
+
+    </div><!-- /wiz-body -->
+
+    <div class="wiz-foot">
+      <button class="btn-wback" id="btnWBack" onclick="wPrev()" style="visibility:hidden">← Indietro</button>
+      <button class="btn-wnext" id="btnWNext" onclick="wNext()" disabled>Avanti →</button>
+    </div>
+  </div>
+</div>
+
 <footer>
   <div style="display:flex;align-items:center;gap:10px">
     <div class="logo-mark" style="width:26px;height:26px;font-size:13px">I</div>
@@ -633,6 +797,275 @@ async function subscribeInline(pos) {
     btn.textContent = 'Riprova';
   }
 }
+</script>
+<script>
+function openWizard(){
+  document.getElementById('wizOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeWizard(){
+  document.getElementById('wizOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeWizard();});
+
+// ── SELECTION ──
+function wpick(el, field, val, gridId){
+  document.getElementById(gridId).querySelectorAll('.wopt').forEach(o=>{o.classList.remove('sel');o.querySelector('.wopt-ck').textContent='';});
+  el.classList.add('sel');
+  el.querySelector('.wopt-ck').textContent='✓';
+  wp[field]=val;
+  wCheckNext();
+}
+
+function wmulti(el, val, gridId){
+  if(val==='niente'){
+    document.getElementById(gridId).querySelectorAll('.wopt').forEach(o=>{o.classList.remove('sel');o.querySelector('.wopt-ck').textContent='';});
+    wp.obiettivi=[];
+  } else {
+    const niente=document.querySelector('#g5 [onclick*="\'niente\'"]');
+    if(niente){niente.classList.remove('sel');niente.querySelector('.wopt-ck').textContent='';}
+    wp.obiettivi=wp.obiettivi.filter(v=>v!=='niente');
+  }
+  if(el.classList.contains('sel')){
+    el.classList.remove('sel');el.querySelector('.wopt-ck').textContent='';
+    wp.obiettivi=wp.obiettivi.filter(v=>v!==val);
+  } else {
+    el.classList.add('sel');el.querySelector('.wopt-ck').textContent='✓';
+    wp.obiettivi.push(val);
+  }
+  wCheckNext();
+}
+
+function wCheckNext(){
+  let ok=false;
+  if(wCur===1)ok=!!wp.settore;
+  else if(wCur===2)ok=!!wp.area;
+  else if(wCur===3)ok=!!wp.dipendenti;
+  else if(wCur===4)ok=!!wp.anni;
+  else if(wCur===5)ok=wp.obiettivi.length>0;
+  const btn=document.getElementById('btnWNext');
+  btn.disabled=!ok;
+  btn.textContent=wCur<5?'Avanti →':'Analizza →';
+}
+
+function wShowStep(id){
+  document.querySelectorAll('.wstep').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.getElementById('wizBody').scrollTop=0;
+}
+
+function wUpdateUI(){
+  const pct=((wCur-1)/5)*100;
+  document.getElementById('wizBar').style.width=pct+'%';
+  document.getElementById('wizStepLabel').textContent=`Domanda ${wCur} di 5`;
+  document.getElementById('btnWBack').style.visibility=wCur>1?'visible':'hidden';
+  wCheckNext();
+}
+
+function wNext(){
+  if(wCur<5){wCur++;wShowStep(wSteps[wCur-1]);wUpdateUI();}
+  else wRunAnalysis();
+}
+function wPrev(){
+  if(wCur>1){wCur--;wShowStep(wSteps[wCur-1]);wUpdateUI();}
+}
+
+// ── ANALYSIS ──
+function wRunAnalysis(){
+  document.getElementById('btnWBack').style.visibility='hidden';
+  document.getElementById('btnWNext').style.display='none';
+  document.getElementById('wizStepLabel').textContent='Analisi in corso…';
+  document.getElementById('wizBar').style.width='90%';
+  wShowStep('wsGen');
+  ['gl1','gl2','gl3','gl4','gl5'].forEach((id,i)=>{
+    setTimeout(()=>{
+      const el=document.getElementById(id);
+      el.classList.add('vis');
+      if(i>0)el.classList.add('done');
+    },i*580);
+  });
+  setTimeout(wShowResults, 3200);
+}
+
+function wShowResults(){
+  const scored=BANDI.map(b=>({...b,s:b.score(wp)})).filter(b=>b.s>10).sort((a,b)=>b.s-a.s);
+  const maxS=scored[0]?.s||100;
+  const norm=scored.map(b=>({...b,pct:Math.round(58+(b.s/maxS)*40)}));
+
+  const visible=norm.slice(0,3);
+  const locked=norm.slice(3,6);
+  const adv=getAdvisory(wp);
+  const total=norm.length;
+
+  const con=document.getElementById('wsRes');
+  let h=`
+    <div class="wres-header">
+      <div>
+        <div class="wres-title">Il tuo profilo.<br><em>${total} bandi compatibili.</em></div>
+        <div style="font-size:13px;color:var(--gray);margin-top:6px;line-height:1.5">Analisi basata su settore, area geografica, dimensione e obiettivi.</div>
+      </div>
+      <div class="wres-badge">${total} bandi trovati</div>
+    </div>
+  `;
+
+  visible.forEach((b,i)=>{
+    h+=`<div class="br" style="animation-delay:${i*.1}s">
+      <div class="br-accent" style="background:${b.color}"></div>
+      <div class="br-top">
+        <div class="br-name">${b.nome}</div>
+        <div class="br-score">
+          <div class="br-bar"><div class="br-fill" data-w="${b.pct}%"></div></div>
+          <span class="br-pct">${b.pct}%</span>
+        </div>
+      </div>
+      <div class="br-why">${b.why(wp)}</div>
+      <div class="br-bottom">
+        <span class="br-amount">${b.importo}</span>
+        <div class="br-tags">${b.tags.map(t=>`<span class="br-tag">${t}</span>`).join('')}</div>
+      </div>
+    </div>`;
+  });
+
+  if(adv.length){
+    h+=`<div class="wadv">
+      <div class="wadv-title">💡 Opportunità che potresti non aver considerato</div>
+      ${adv.map(t=>`<div class="wadv-item"><span class="wadv-arr">→</span><span>${t}</span></div>`).join('')}
+    </div>`;
+  }
+
+  // Locked blurred cards
+  if(locked.length){
+    h+=`<div class="blur-gate-label">+ altri ${locked.length + (norm.length>6?norm.length-6:0)} bandi — visibili al lancio</div>`;
+    locked.forEach(b=>{
+      h+=`<div class="br br-locked">
+        <div class="br-top">
+          <div class="br-name">${b.nome}</div>
+          <div class="br-score"><div class="br-bar"><div class="br-fill" style="width:${b.pct}%"></div></div><span class="br-pct">${b.pct}%</span></div>
+        </div>
+        <div class="br-why">•••••••••••••••••••••••••••••••••••••••••••</div>
+        <div class="br-bottom"><span class="br-amount">${b.importo}</span></div>
+      </div>`;
+    });
+  }
+
+  // Launch gate
+  h+=`<div class="launch-gate">
+    <div class="lg-eyebrow">🚀 Lancio — prossimo mese</div>
+    <div class="lg-title">Vuoi l'analisi completa<br>al prezzo di lancio?</div>
+    <div class="lg-sub">Il servizio completo — con tutti i ${total} bandi, guide alla domanda e report PDF — parte il prossimo mese.<br>Gli iscritti oggi ricevono accesso in anteprima e prezzo bloccato.</div>
+    <div class="lg-launch">⏰ Prezzo di lancio riservato agli iscritti</div>
+    <div class="lg-perks">
+      <div class="lg-perk"><span class="lg-perk-icon">✓</span><span>Tutti i ${total} bandi compatibili</span></div>
+      <div class="lg-perk"><span class="lg-perk-icon">✓</span><span>Guida alla domanda per ogni bando</span></div>
+      <div class="lg-perk"><span class="lg-perk-icon">✓</span><span>Report PDF professionale</span></div>
+      <div class="lg-perk"><span class="lg-perk-icon">✓</span><span>Prezzo bloccato al lancio</span></div>
+    </div>
+    <div id="lgFormWrap">
+      <div class="lg-form">
+        <input class="lg-input" type="email" placeholder="tua@email.it" id="lgEmail">
+        <button class="btn-lg" onclick="lgSubmit()">Avvisami al lancio →</button>
+      </div>
+      <div class="lg-note">Zero spam · Disiscrizione in un click · <a href="privacy.html" style="color:rgba(201,146,42,.6);text-decoration:none">Privacy policy</a></div>
+    </div>
+    <div class="lg-success" id="lgSuccess">
+      <div class="lg-success-icon">✅</div>
+      <div class="lg-success-title">Perfetto. Ti avviso al lancio.</div>
+      <div class="lg-success-sub">Riceverai un'email non appena il servizio completo è disponibile — con tutti i ${total} bandi e il tuo prezzo di lancio riservato.<br><br>Nel frattempo, se hai domande scrivi a <a href="mailto:info@incentivai.it" style="color:var(--gold-light)">info@incentivai.it</a></div>
+    </div>
+  </div>`;
+
+  con.innerHTML=h;
+
+  // Animate score bars
+  setTimeout(()=>{
+    con.querySelectorAll('.br-fill[data-w]').forEach(el=>{
+      const w=el.dataset.w;
+      el.style.width='0%';
+      setTimeout(()=>{el.style.width=w;},80);
+    });
+  },150);
+
+  document.getElementById('wizBar').style.width='100%';
+  document.getElementById('wizStepLabel').textContent=`${total} bandi trovati`;
+  document.getElementById('btnWBack').style.visibility='visible';
+  document.getElementById('btnWBack').textContent='← Rifai l\'analisi';
+  document.getElementById('btnWBack').onclick=wRestart;
+  document.getElementById('btnWNext').style.display='none';
+
+  wShowStep('wsRes');
+  document.getElementById('wizBody').scrollTop=0;
+}
+
+function lgSubmit(){
+  const email=document.getElementById('lgEmail').value.trim();
+  if(!email||!email.includes('@')){
+    const inp=document.getElementById('lgEmail');
+    inp.style.borderColor='rgba(224,82,82,.5)';
+    setTimeout(()=>inp.style.borderColor='',2000);
+    return;
+  }
+  document.getElementById('lgFormWrap').style.display='none';
+  document.getElementById('lgSuccess').classList.add('show');
+  subscribeEmail(email, 'wizard');
+}
+
+function wRestart(){
+  wCur=1;
+  wp.settore=null;wp.area=null;wp.dipendenti=null;wp.anni=null;wp.obiettivi=[];
+  document.querySelectorAll('.wopt').forEach(o=>{o.classList.remove('sel');o.querySelector('.wopt-ck').textContent='';});
+  document.getElementById('btnWBack').style.visibility='hidden';
+  document.getElementById('btnWBack').onclick=wPrev;
+  document.getElementById('btnWNext').style.display='flex';
+  wShowStep('ws1');
+  wUpdateUI();
+}
+
+// ── PAGE JS ──
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+});
+const obs=new IntersectionObserver(e=>e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');}),{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function toggleFaq(el){const o=el.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!o)el.classList.add('open');}
+function showReport(id,btn){document.querySelectorAll('.report-preview').forEach(r=>r.classList.remove('active'));document.querySelectorAll('.report-tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active');}
+function handleSubmit(inputId,rowId,successId,perksId){
+  const input=document.getElementById(inputId);
+  const email=input.value.trim();
+  if(!email||!email.includes('@')){input.style.borderColor='rgba(232,80,80,.5)';input.style.boxShadow='0 0 0 3px rgba(232,80,80,.1)';setTimeout(()=>{input.style.borderColor='';input.style.boxShadow='';},2000);return;}
+  document.getElementById(rowId).classList.add('hide');
+  if(perksId)document.getElementById(perksId).classList.add('hide');
+  document.getElementById(successId).classList.add('show');
+  subscribeEmail(email, 'hero');
+}
+document.getElementById('emailInput') && document.getElementById('emailInput').addEventListener('keydown',e=>{if(e.key==='Enter')handleSubmit('emailInput','formRow','formSuccess','wlPerks');});
+document.getElementById('ctaEmail') && document.getElementById('ctaEmail').addEventListener('keydown',e=>{if(e.key==='Enter')handleCtaSubmit();});
+function handleCtaSubmit(){
+  const input=document.getElementById('ctaEmail');
+  const email=input.value.trim();
+  if(!email||!email.includes('@')){input.style.borderColor='rgba(232,80,80,.5)';input.style.boxShadow='0 0 0 3px rgba(232,80,80,.1)';setTimeout(()=>{input.style.borderColor='';input.style.boxShadow='';},2000);return;}
+  document.getElementById('ctaFormWrap').style.display='none';
+  document.getElementById('ctaSuccess').style.display='block';
+  subscribeEmail(email, 'cta');
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}});});
+
+wUpdateUI();
+
+// ── MAILERLITE SUBSCRIPTION ──
+async function subscribeEmail(email, source) {
+  try {
+    await fetch('/.netlify/functions/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source })
+    });
+  } catch (e) {
+    // Silenzioso — l'utente ha già visto il messaggio di successo
+    console.error('Subscribe error:', e);
+  }
+}
+
 </script>
 <script>
 function openWizard(){

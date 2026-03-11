@@ -714,33 +714,16 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
 <section class="cta-section" id="whitelist">
   <div class="reveal">
     <h2 class="cta-title">Scopri le opportunità<br>che <em>non sapevi di avere.</em></h2>
-    <p class="cta-sub">Fai l'analisi gratuita adesso. Se vuoi il report completo al lancio, lascia la tua email — ti avvisiamo in anteprima con il prezzo bloccato.</p>
-
-    <div style="max-width:560px;margin:0 auto">
-      <!-- Email form -->
-      <div id="ctaFormWrap" style="background:rgba(255,255,255,.04);border:1px solid rgba(201,146,42,.22);border-radius:16px;padding:36px 40px;text-align:left">
-        <div style="font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px">📬 Lista d'attesa — accesso anticipato</div>
-        <div style="font-size:17px;font-weight:500;color:var(--white);margin-bottom:6px;line-height:1.4">Entra gratis. Nessuna carta di credito.</div>
-        <div style="font-size:13px;color:var(--gray);margin-bottom:24px;line-height:1.55">I primi iscritti ricevono l'analisi completa gratuita e il prezzo di lancio bloccato — riservato solo a chi entra adesso.</div>
-        <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
-          <input class="form-input" type="email" placeholder="tua@email.it" id="ctaEmail" style="flex:1;min-width:200px">
-          <button class="btn-primary" onclick="handleCtaSubmit()">Voglio accedere →</button>
-        </div>
-        <div style="display:flex;gap:20px;flex-wrap:wrap;margin-top:16px">
-          <span style="font-size:12px;color:rgba(138,154,175,.5);display:flex;align-items:center;gap:6px"><span style="color:var(--green)">✓</span> Zero spam</span>
-          <span style="font-size:12px;color:rgba(138,154,175,.5);display:flex;align-items:center;gap:6px"><span style="color:var(--green)">✓</span> Disiscrizione in un click</span>
-          <span style="font-size:12px;color:rgba(138,154,175,.5);display:flex;align-items:center;gap:6px"><span style="color:var(--green)">✓</span> <a href="privacy.html" style="color:rgba(138,154,175,.5);text-decoration:underline">Privacy policy</a></span>
-        </div>
+    <p class="cta-sub">Incrociamo il profilo della tua PMI con 30+ bandi pubblici attivi. 5 domande, risultati immediati, gratis.</p>
+    <div style="margin-top:36px;display:flex;flex-direction:column;align-items:center;gap:16px">
+      <button class="btn-wizard" onclick="openWizard()" style="font-size:17px;padding:20px 40px">
+        Scopri adesso <span class="btn-wizard-arrow">→</span>
+      </button>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center">
+        <span style="font-size:12px;color:rgba(138,154,175,.5);display:flex;align-items:center;gap:6px"><span style="color:var(--green)">✓</span> 5 domande · 3 minuti</span>
+        <span style="font-size:12px;color:rgba(138,154,175,.5);display:flex;align-items:center;gap:6px"><span style="color:var(--green)">✓</span> Zero spam</span>
+        <span style="font-size:12px;color:rgba(138,154,175,.5);display:flex;align-items:center;gap:6px"><span style="color:var(--green)">✓</span> Gratis</span>
       </div>
-
-      <!-- Success state -->
-      <div id="ctaSuccess" style="display:none;background:rgba(46,204,138,.06);border:1px solid rgba(46,204,138,.25);border-radius:16px;padding:40px;text-align:center">
-        <div style="font-size:40px;margin-bottom:16px">✅</div>
-        <div style="font-family:var(--serif);font-size:24px;color:var(--white);margin-bottom:8px;font-style:italic">Sei dentro. Ti aspettiamo al lancio.</div>
-        <div style="font-size:14px;color:var(--gray);line-height:1.65">Riceverai una email non appena il servizio completo è disponibile — con il tuo prezzo di lancio riservato.<br>Nel frattempo puoi già fare l'analisi gratuita qui sopra.</div>
-        <button class="btn-wizard" onclick="openWizard()" style="margin-top:24px;font-size:15px">Fai l'analisi adesso →</button>
-      </div>
-
     </div>
   </div>
 </section>
@@ -752,7 +735,7 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
   </div>
   <div class="footer-links">
     <a href="chi-siamo.html">Chi siamo</a>
-    <a href="risorse.html">Risorse</a>
+    <a href="/blog/">Blog</a>
     <a href="privacy.html">Privacy Policy</a>
     <a href="cookie.html">Cookie</a>
     <a href="contatti.html">Contatti</a>
@@ -1190,9 +1173,9 @@ function handleSubmit(inputId,rowId,successId,perksId){
   subscribeEmail(email, 'hero');
 }
 document.getElementById('emailInput') && document.getElementById('emailInput').addEventListener('keydown',e=>{if(e.key==='Enter')handleSubmit('emailInput','formRow','formSuccess','wlPerks');});
-document.getElementById('ctaEmail') && document.getElementById('ctaEmail').addEventListener('keydown',e=>{if(e.key==='Enter')handleCtaSubmit();});
+// ctaEmail removed
 function handleCtaSubmit(){
-  const input=document.getElementById('ctaEmail');
+  const input=document.getElementById('ctaEmail');if(!input)return;
   const email=input.value.trim();
   if(!email||!email.includes('@')){input.style.borderColor='rgba(232,80,80,.5)';input.style.boxShadow='0 0 0 3px rgba(232,80,80,.1)';setTimeout(()=>{input.style.borderColor='';input.style.boxShadow='';},2000);return;}
   document.getElementById('ctaFormWrap').style.display='none';

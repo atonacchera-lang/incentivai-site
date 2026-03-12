@@ -160,6 +160,14 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
 .btn-wizard:active{transform:translateY(0)}
 .btn-wizard-arrow{font-size:18px;transition:transform .2s}
 .btn-wizard:hover .btn-wizard-arrow{transform:translateX(4px)}
+/* wizard */
+.btn-wizard{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold) 0%,#A8761A 100%);color:var(--navy);border:none;border-radius:10px;padding:17px 32px;font-size:16px;font-weight:700;cursor:pointer;font-family:var(--sans);letter-spacing:-.2px;transition:all .25s var(--expo);position:relative;overflow:hidden}
+.btn-wizard::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);opacity:0;transition:opacity .2s}
+.btn-wizard:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(201,146,42,.4)}
+.btn-wizard:hover::before{opacity:1}
+.btn-wizard:active{transform:translateY(0)}
+.btn-wizard-arrow{font-size:18px;transition:transform .2s}
+.btn-wizard:hover .btn-wizard-arrow{transform:translateX(4px)}
 #wizOverlay{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .4s var(--expo)}
 #wizOverlay.open{opacity:1;pointer-events:all}
 .wiz-backdrop{position:absolute;inset:0;background:rgba(6,12,26,.93);backdrop-filter:blur(28px)}
@@ -262,6 +270,9 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
 
 
 
+
+
+    
 
     <!-- Article CTA Banner -->
     <div style="background:linear-gradient(135deg,rgba(201,146,42,.1),rgba(201,146,42,.04));border:1px solid rgba(201,146,42,.22);border-radius:14px;padding:24px 32px;margin:0 0 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
@@ -475,7 +486,7 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
       <div class="sc-stat"><span class="sc-stat-val">80%</span><span class="sc-stat-label">Interessi abbattibili con Beni 4.0</span></div>
       <div class="sc-stat"><span class="sc-stat-val">12</span><span class="sc-stat-label">Mesi per acquistare i beni</span></div>
     </div>
-    <a href="/index.html" class="sc-cta">Verifica la tua compatibilità →</a>
+    <button onclick="openWizard()" class="sc-cta" style="border:none;cursor:pointer;width:100%;text-align:center">Verifica la tua compatibilità →</button>
   </aside>
 </div>
 
@@ -534,6 +545,9 @@ async function subscribeInline(pos) {
   }
 }
 </script>
+
+
+
 
 
 <div id="wizOverlay">

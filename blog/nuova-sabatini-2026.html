@@ -281,7 +281,7 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
         <div style="font-size:16px;font-weight:600;color:#FAFAF7;margin-bottom:4px">Hai diritto a questi fondi?</div>
         <div style="font-size:13px;color:#8A9AAF">Scopri subito quali incentivi puoi richiedere — 5 domande, 3 minuti.</div>
       </div>
-      <button type="button" data-open-wizard class="article-wizard-trigger" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#C9922A,#A8761A);color:#0E1B3D;border:none;border-radius:8px;padding:13px 22px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap">Scopri adesso →</button>
+      <button onclick="openWizard()" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#C9922A,#A8761A);color:#0E1B3D;border:none;border-radius:8px;padding:13px 22px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap">Scopri adesso →</button>
     </div>
     <div class="article-content">
 
@@ -401,24 +401,6 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
         </div>
       </div>
 
-            <!-- Signup form mid-article -->
-      <div class="signup-form-box">
-        <div class="sfb-eyebrow">Accesso anticipato gratuito</div>
-        <div class="sfb-title">Scopri tutti i bandi<br><em>disponibili per la tua impresa.</em></div>
-        <div class="sfb-sub">Analisi personalizzata in 3 minuti. Ricevi anche le guide sui nuovi bandi ogni settimana.</div>
-        <div id="sfb-form-mid">
-          <div class="sfb-row">
-            <input class="sfb-input" type="email" id="sfb-email-mid" placeholder="La tua email aziendale" autocomplete="email">
-            <button class="sfb-btn" onclick="subscribeInline('mid')">Accedi gratis →</button>
-          </div>
-          <div class="sfb-note">Gratis · Nessuna carta di credito · Cancellati quando vuoi</div>
-        </div>
-        <div class="sfb-success" id="sfb-success-mid">
-          <div class="sfb-success-icon">✓</div>
-          <div class="sfb-success-text">Sei dentro!</div>
-          <div class="sfb-success-sub">Controlla la tua email — ti abbiamo mandato un messaggio di benvenuto.</div>
-        </div>
-      </div>
 <h2 id="cumulo">Nuova Sabatini e Transizione 5.0: si possono cumulare?</h2>
       <p>Sì — e questa è una delle combinazioni più vantaggiose per le PMI nel 2026. La <strong>Nuova Sabatini</strong> abbatte gli interessi sul finanziamento. <strong>Transizione 5.0</strong> offre un credito d'imposta sull'investimento (dal 15% al 45% del costo del bene) per investimenti che producono risparmio energetico.</p>
       <div class="callout callout-tip">
@@ -486,7 +468,7 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
       <div class="sc-stat"><span class="sc-stat-val">80%</span><span class="sc-stat-label">Interessi abbattibili con Beni 4.0</span></div>
       <div class="sc-stat"><span class="sc-stat-val">12</span><span class="sc-stat-label">Mesi per acquistare i beni</span></div>
     </div>
-    <button type="button" data-open-wizard class="sc-cta article-wizard-trigger" style="border:none;cursor:pointer;width:100%;text-align:center">Verifica la tua compatibilità →</button>
+    <button onclick="openWizard()" class="sc-cta" style="border:none;cursor:pointer;width:100%;text-align:center">Verifica la tua compatibilità →</button>
   </aside>
 </div>
 
@@ -1004,27 +986,5 @@ async function subscribeEmail(email, source) {
 }
 
 </script>
-
-<script>
-(function(){
-  function bindWizardTriggers(){
-    document.querySelectorAll('[data-open-wizard]').forEach(function(btn){
-      if (btn.dataset.wizardBound === 'true') return;
-      btn.dataset.wizardBound = 'true';
-      btn.addEventListener('click', function(e){
-        e.preventDefault();
-        if (typeof openWizard === 'function') openWizard();
-      });
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindWizardTriggers);
-  } else {
-    bindWizardTriggers();
-  }
-})();
-</script>
-
 </body>
 </html>

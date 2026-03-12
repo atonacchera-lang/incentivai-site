@@ -263,7 +263,6 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
 
 
 
-
     <!-- Article CTA Banner -->
     <div style="background:linear-gradient(135deg,rgba(201,146,42,.1),rgba(201,146,42,.04));border:1px solid rgba(201,146,42,.22);border-radius:14px;padding:24px 32px;margin:0 0 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
       <div>
@@ -273,7 +272,6 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
       </div>
       <button onclick="openWizard()" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#C9922A,#A8761A);color:#0E1B3D;border:none;border-radius:8px;padding:13px 22px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap">Scopri adesso →</button>
     </div>
-
     <div class="article-content">
 
       <p>La Nuova Sabatini è il bando più utilizzato dalle piccole e medie imprese italiane. Dal 2014 a oggi ha finanziato oltre 200.000 operazioni per un totale di investimenti superiore a €30 miliardi. Eppure molte PMI non la conoscono, o la conoscono ma non sanno se possono accedervi.</p>
@@ -652,6 +650,78 @@ async function subscribeInline(pos) {
   </div>
 </div>
 <script>
+
+// ── STATE ──
+const wp = { settore:null, area:null, dipendenti:null, anni:null, obiettivi:[] };
+let wCur = 1;
+const wSteps = ['ws1','ws2','ws3','ws4','ws5'];
+const wFields = ['settore','area','dipendenti','anni',null];
+
+// ── BANDI DB ──
+const BANDI = [
+  { id:'sabatini', nome:'Nuova Sabatini', importo:'fino a €4.000.000', tipo:'Finanziamento agevolato', color:'#C9922A',
+    tags:['Nazionale','Tutti i settori'],
+    score(p){let s=0;if(['manifattura','artigianato','commercio','servizi','tech'].includes(p.settore))s+=30;if(p.obiettivi.includes('macchinari')||p.obiettivi.includes('digitale'))s+=35;if(['6-15','16-49','50-250'].includes(p.dipendenti))s+=20;if(['10+','3-10'].includes(p.anni))s+=10;return s;},
+    why(p){return p.obiettivi.includes('macchinari')?'Perfetto per finanziare i macchinari che vuoi acquistare. Sportello sempre aperto, nessuna scadenza imminente.':'Compatibile con il tuo settore per investimenti in beni strumentali. Sportello sempre aperto.'}
+  },
+  { id:'t50', nome:'Transizione 5.0 — Credito imposta', importo:'fino al 45% credito d\'imposta', tipo:'Credito PNRR', color:'#2ECC8A',
+    tags:['PNRR','Digitale','Green'],
+    score(p){let s=0;if(['manifattura','tech','artigianato'].includes(p.settore))s+=35;if(['digitale','sostenibilita','macchinari'].some(o=>p.obiettivi.includes(o)))s+=30;if(['6-15','16-49','50-250'].includes(p.dipendenti))s+=15;return s;},
+    why(p){return p.obiettivi.includes('sostenibilita')?'Copre pannelli, sistemi di risparmio e certificazioni green. Cumulabile con Nuova Sabatini.':'Progettato per investimenti in tecnologia digitale e sostenibilità. Cumulabile con altri incentivi nazionali.'}
+  },
+  { id:'esonero', nome:'Esonero contributivo under 36', importo:'fino a €6.000/anno per dipendente', tipo:'Sgravio INPS', color:'#5A9EE8',
+    tags:['Nazionale','Risorse umane'],
+    score(p){let s=0;if(p.obiettivi.includes('assumere'))s+=55;if(['2-5','6-15','16-49'].includes(p.dipendenti))s+=25;if(p.dipendenti!=='250+')s+=10;return s;},
+    why(p){return 'Se assumi under 36, azzeri i contributi INPS per 36 mesi. Per 2 assunzioni, risparmio stimato €24-36K totali — costo aggiuntivo netto quasi zero.'}
+  },
+  { id:'simest', nome:'SIMEST Fondo 394', importo:'fino al 25% a fondo perduto', tipo:'Internazionalizzazione', color:'#9B5DE5',
+    tags:['Nazionale','Export'],
+    score(p){let s=0;if(p.obiettivi.includes('internazionalizzare'))s+=60;if(['manifattura','tech','artigianato'].includes(p.settore))s+=20;if(['6-15','16-49','50-250'].includes(p.dipendenti))s+=15;return s;},
+    why(){return 'Copre e-commerce in lingua straniera, fiere internazionali, certificazioni per mercati esteri. Quota a fondo perduto fino al 25%.'}
+  },
+  { id:'voucher', nome:'Voucher Digitalizzazione PMI', importo:'fino a €10.000 a fondo perduto', tipo:'Fondo perduto MiMIT', color:'#F0A500',
+    tags:['Nazionale','Digitale','Fondo perduto'],
+    score(p){let s=0;if(p.obiettivi.includes('digitale'))s+=55;if(['commercio','servizi','ristorazione'].includes(p.settore))s+=20;if(['1','2-5','6-15'].includes(p.dipendenti))s+=20;return s;},
+    why(){return 'Copre il 50% delle spese per sito web, e-commerce, software gestionale, CRM e marketing digitale. Ideale per micro e piccole imprese.'}
+  },
+  { id:'rd', nome:'Credito d\'imposta R&D', importo:'10-20% delle spese R&D', tipo:'Credito d\'imposta', color:'#E84393',
+    tags:['Nazionale','R&D'],
+    score(p){let s=0;if(p.obiettivi.includes('ricerca'))s+=55;if(['tech','manifattura'].includes(p.settore))s+=25;if(['6-15','16-49'].includes(p.dipendenti))s+=15;return s;},
+    why(p){return p.settore==='tech'?'Ogni ora di sviluppo su prodotti nuovi genera credito — basta documentare. Nessuna domanda da presentare preventivamente.':'Spese per personale, contratti con università e attrezzatura rientrano. Recupero automatico in dichiarazione dei redditi.'}
+  },
+  { id:'restosud', nome:'Resto al Sud', importo:'fino a €200.000 (50% fondo perduto)', tipo:'Fondo perduto + finanziamento 0%', color:'#FF6B35',
+    tags:['Mezzogiorno','Fondo perduto'],
+    score(p){let s=0;if(['sud','isole'].includes(p.area))s+=40;if(['0-1','1-3','3-10'].includes(p.anni))s+=30;if(!['250+','50-250'].includes(p.dipendenti))s+=20;return s;},
+    why(p){return `Sei al ${p.area==='isole'?'Sicilia/Sardegna':'Sud Italia'} con impresa giovane: target ideale. Metà a fondo perduto, metà a tasso zero. Molto sottoutilizzato nel tuo settore.`}
+  },
+  { id:'zes', nome:'ZES Unica Mezzogiorno', importo:'dal 15% al 50% degli investimenti', tipo:'Credito imposta ZES', color:'#FF6B35',
+    tags:['Mezzogiorno','ZES','Cumulabile'],
+    score(p){let s=0;if(['sud','isole'].includes(p.area))s+=45;if(['macchinari','digitale','sostenibilita'].some(o=>p.obiettivi.includes(o)))s+=30;if(['manifattura','artigianato'].includes(p.settore))s+=20;return s;},
+    why(){return 'Credito d\'imposta extra su tutti gli investimenti nelle ZES del Sud. Si cumula con Nuova Sabatini e Transizione 5.0 — triplichi il vantaggio.'}
+  },
+  { id:'garanzia', nome:'Fondo di Garanzia PMI', importo:'garanzia statale fino all\'80%', tipo:'Garanzia MedioCredito', color:'#3D8BFF',
+    tags:['Nazionale','Accesso credito'],
+    score(p){let s=0;if(['macchinari','digitale','sostenibilita'].some(o=>p.obiettivi.includes(o)))s+=30;if(['2-5','6-15','16-49'].includes(p.dipendenti))s+=30;if(['3-10','10+'].includes(p.anni))s+=20;return s;},
+    why(){return 'Non è un finanziamento diretto: permette di accedere a prestiti bancari senza garanzie reali proprie. Lo Stato copre fino all\'80% del rischio.'}
+  },
+  { id:'femminile', nome:'Bandi imprenditoria femminile', importo:'maggiorazione 20% + bandi dedicati', tipo:'Agevolazioni dedicate', color:'#E84393',
+    tags:['Nazionale','Imprenditoria femminile'],
+    score(p){let s=0;if(p.settore)s+=20;if(['0-1','1-3'].includes(p.anni))s+=30;if(['1','2-5'].includes(p.dipendenti))s+=20;return s;},
+    why(){return 'Se la tua impresa ha titolarità femminile maggioritaria, hai diritto a maggiorazioni del 20% su molti bandi nazionali e accesso a Smart&Start dedicato.'}
+  },
+];
+
+function getAdvisory(p){
+  const t=[];
+  if(['sud','isole'].includes(p.area)) t.push('Sei al Sud: i bandi nazionali hanno aliquote maggiorate del 20-30% per imprese meridionali. Ogni incentivo che ottieni vale di più rispetto al Nord.');
+  if(p.settore==='manifattura'&&!p.obiettivi.includes('macchinari')) t.push('Sei nel manifatturiero: Nuova Sabatini + Transizione 5.0 possono coprire il 60-80% di un nuovo macchinario. Vale la pena valutarlo anche senza un piano definito.');
+  if(p.settore==='tech'&&!p.obiettivi.includes('ricerca')) t.push('Sviluppi software? Ogni ora su funzionalità nuove può generare credito R&D al 10-20%. Molte software house non lo sfruttano per mancanza di documentazione.');
+  if(!p.obiettivi.includes('assumere')&&['6-15','16-49'].includes(p.dipendenti)) t.push('Con '+p.dipendenti+' dipendenti, assumere 1-2 under 36 azzerebbe i contributi INPS per 36 mesi. Costo aggiuntivo netto: quasi zero.');
+  if(p.obiettivi.includes('niente')) t.push('Senza un piano specifico sei comunque eleggibile per credito R&D, esonero contributivo e Fondo di Garanzia PMI — nessuno di questi richiede un progetto di investimento predefinito.');
+  return t.slice(0,2);
+}
+
+// ── OPEN / CLOSE ──
 function openWizard(){
   document.getElementById('wizOverlay').classList.add('open');
   document.body.style.overflow='hidden';
@@ -892,9 +962,9 @@ function handleSubmit(inputId,rowId,successId,perksId){
   subscribeEmail(email, 'hero');
 }
 document.getElementById('emailInput') && document.getElementById('emailInput').addEventListener('keydown',e=>{if(e.key==='Enter')handleSubmit('emailInput','formRow','formSuccess','wlPerks');});
-document.getElementById('ctaEmail') && document.getElementById('ctaEmail').addEventListener('keydown',e=>{if(e.key==='Enter')handleCtaSubmit();});
+// ctaEmail removed
 function handleCtaSubmit(){
-  const input=document.getElementById('ctaEmail');
+  const input=document.getElementById('ctaEmail');if(!input)return;
   const email=input.value.trim();
   if(!email||!email.includes('@')){input.style.borderColor='rgba(232,80,80,.5)';input.style.boxShadow='0 0 0 3px rgba(232,80,80,.1)';setTimeout(()=>{input.style.borderColor='';input.style.boxShadow='';},2000);return;}
   document.getElementById('ctaFormWrap').style.display='none';

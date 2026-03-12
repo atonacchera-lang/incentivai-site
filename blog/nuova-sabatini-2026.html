@@ -168,17 +168,13 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
 .btn-wizard:active{transform:translateY(0)}
 .btn-wizard-arrow{font-size:18px;transition:transform .2s}
 .btn-wizard:hover .btn-wizard-arrow{transform:translateX(4px)}
-
 #wizOverlay{position:fixed;inset:0;z-index:500;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .4s var(--expo)}
 #wizOverlay.open{opacity:1;pointer-events:all}
 .wiz-backdrop{position:absolute;inset:0;background:rgba(6,12,26,.93);backdrop-filter:blur(28px)}
-
 .wizard{position:relative;z-index:2;width:100%;max-width:800px;max-height:92vh;overflow:hidden;border-radius:20px;background:var(--navy-mid);border:1px solid rgba(201,146,42,.18);box-shadow:0 40px 100px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.04);transform:translateY(28px) scale(.97);transition:transform .45s var(--expo);display:flex;flex-direction:column}
 #wizOverlay.open .wizard{transform:none}
-
 .wiz-progress{height:3px;background:rgba(255,255,255,.06);flex-shrink:0;border-radius:3px 3px 0 0;overflow:hidden}
 .wiz-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-pale));border-radius:0 2px 2px 0;transition:width .5s var(--expo);width:0%}
-
 .wiz-head{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;border-bottom:1px solid rgba(255,255,255,.05);flex-shrink:0}
 .wiz-head-logo{display:flex;align-items:center;gap:8px}
 .wiz-head-mark{width:26px;height:26px;background:linear-gradient(135deg,var(--gold),var(--gold-pale));border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:13px;color:var(--navy);font-weight:700}
@@ -187,21 +183,14 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
 .wiz-step-label{font-family:var(--mono);font-size:11px;color:var(--gray)}
 .btn-wiz-close{width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.1);background:transparent;color:var(--gray);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;line-height:1}
 .btn-wiz-close:hover{border-color:rgba(255,255,255,.25);color:var(--white);background:rgba(255,255,255,.05)}
-
 .wiz-body{flex:1;overflow-y:auto;padding:36px 40px;scrollbar-width:thin;scrollbar-color:rgba(201,146,42,.15) transparent}
-
-/* Steps */
 .wstep{display:none}
 .wstep.active{display:block;animation:wstepIn .38s var(--expo)}
 @keyframes wstepIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:none}}
-
 .wq{font-family:var(--serif);font-size:clamp(22px,3.5vw,30px);font-weight:400;color:var(--white);line-height:1.22;margin-bottom:8px;letter-spacing:-.4px}
 .wq em{font-style:italic;color:var(--gold-light)}
 .whint{font-size:14px;color:var(--gray);margin-bottom:28px;line-height:1.5}
-
 .opt-grid{display:grid;gap:10px}
-.g2{grid-template-columns:1fr 1fr}
-.g3{grid-template-columns:1fr 1fr 1fr}
 .wopt{border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:16px 18px;cursor:pointer;transition:all .2s var(--expo);background:rgba(255,255,255,.02);display:flex;align-items:center;gap:12px;position:relative;overflow:hidden}
 .wopt:hover{border-color:rgba(201,146,42,.3);background:rgba(201,146,42,.05);transform:translateY(-1px)}
 .wopt.sel{border-color:var(--gold);background:rgba(201,146,42,.1)}
@@ -211,101 +200,20 @@ footer{padding:32px 48px;border-top:1px solid rgba(255,255,255,.05);display:flex
 .wopt-sub{font-size:11px;color:var(--gray);margin-top:2px}
 .wopt-ck{width:18px;height:18px;border-radius:50%;border:1.5px solid rgba(255,255,255,.15);flex-shrink:0;transition:all .2s;display:flex;align-items:center;justify-content:center;font-size:9px}
 .wopt.sel .wopt-ck{background:var(--gold);border-color:var(--gold);color:var(--navy);content:'✓'}
-
-/* Generating */
 .wgen{text-align:center;padding:48px 0}
 .wgen-icon{font-size:44px;margin-bottom:20px;display:inline-block;animation:wSpin 2.5s linear infinite}
-@keyframes wSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
 .wgen-title{font-family:var(--serif);font-size:26px;color:var(--white);margin-bottom:16px;font-style:italic}
 .wgen-line{font-size:13px;color:var(--gray);line-height:2.2;opacity:0;transition:opacity .35s}
 .wgen-line.vis{opacity:1}
 .wgen-line.done{color:#4ECBA4}
-
-/* Results */
-.wres-header{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:28px;flex-wrap:wrap}
-.wres-title{font-family:var(--serif);font-size:clamp(22px,3vw,30px);color:var(--white);line-height:1.2;letter-spacing:-.4px}
-.wres-title em{font-style:italic;color:var(--gold-light)}
-.wres-badge{font-family:var(--mono);font-size:11px;color:var(--gold);background:rgba(201,146,42,.1);border:1px solid rgba(201,146,42,.2);border-radius:6px;padding:5px 12px;white-space:nowrap;align-self:flex-start;margin-top:4px}
-
-/* Bando result card */
-.br{border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:20px;margin-bottom:10px;background:rgba(255,255,255,.02);position:relative;overflow:hidden;animation:brIn .4s var(--expo) both}
-@keyframes brIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.br-accent{position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:3px 0 0 3px}
-.br-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:12px}
-.br-name{font-size:15px;font-weight:600;color:var(--white);flex:1;line-height:1.3}
-.br-score{display:flex;align-items:center;gap:7px;flex-shrink:0}
-.br-bar{width:64px;height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
-.br-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--gold),var(--gold-pale));width:0;transition:width 1.1s var(--expo)}
-.br-pct{font-family:var(--mono);font-size:11px;color:var(--gold-light);min-width:30px}
-.br-why{font-size:12px;color:var(--gray);line-height:1.55;margin-bottom:8px}
-.br-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px}
-.br-amount{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--green)}
-.br-tags{display:flex;gap:5px;flex-wrap:wrap}
-.br-tag{font-size:10px;color:rgba(138,154,175,.55);background:rgba(255,255,255,.04);border-radius:3px;padding:2px 7px}
-
-/* Advisory */
-.wadv{background:linear-gradient(135deg,rgba(201,146,42,.07),rgba(201,146,42,.02));border:1px solid rgba(201,146,42,.18);border-radius:12px;padding:18px;margin:16px 0;animation:brIn .4s var(--expo) .35s both}
-.wadv-title{font-size:12px;font-weight:600;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:6px}
-.wadv-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:9px;font-size:12px;color:rgba(200,215,230,.7);line-height:1.5}
-.wadv-item:last-child{margin-bottom:0}
-.wadv-arr{color:var(--gold-light);flex-shrink:0;font-size:11px;margin-top:1px}
-
-/* Blurred locked cards */
-.br-locked{filter:blur(5px);pointer-events:none;user-select:none;opacity:.7}
-.blur-gate-label{text-align:center;padding:10px 0 4px;font-size:12px;color:rgba(138,154,175,.5);font-family:var(--mono);letter-spacing:.06em;text-transform:uppercase}
-
-/* ── LAUNCH GATE (replaces email gate) ── */
-.launch-gate{background:linear-gradient(135deg,rgba(201,146,42,.08) 0%,rgba(14,27,61,.6) 100%);border:1px solid rgba(201,146,42,.25);border-radius:16px;padding:32px;margin-top:24px;text-align:center;animation:brIn .5s var(--expo) .5s both}
-.lg-eyebrow{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px}
-.lg-title{font-family:var(--serif);font-size:clamp(20px,3vw,26px);color:var(--white);margin-bottom:8px;font-style:italic;line-height:1.25}
-.lg-sub{font-size:14px;color:rgba(200,215,230,.6);margin-bottom:8px;line-height:1.55}
-.lg-launch{display:inline-block;background:rgba(201,146,42,.12);border:1px solid rgba(201,146,42,.3);border-radius:100px;padding:6px 16px;font-family:var(--mono);font-size:11px;color:var(--gold-light);letter-spacing:.06em;margin-bottom:20px}
-.lg-perks{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:24px}
-.lg-perk{display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(202,214,230,.6)}
-.lg-perk-icon{color:var(--green);font-size:12px}
-.lg-form{display:flex;gap:8px;max-width:400px;margin:0 auto}
-.lg-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:13px 16px;font-size:14px;color:var(--white);font-family:var(--sans);outline:none;transition:all .2s}
-.lg-input:focus{border-color:rgba(201,146,42,.5);box-shadow:0 0 0 3px rgba(201,146,42,.1)}
-.lg-input::placeholder{color:rgba(120,140,165,.5)}
-.btn-lg{background:linear-gradient(135deg,var(--gold),#A8761A);color:var(--navy);border:none;border-radius:8px;padding:13px 22px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sans);white-space:nowrap;transition:all .2s}
-.btn-lg:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,146,42,.35)}
-.lg-note{font-size:11px;color:rgba(120,140,165,.4);margin-top:10px}
-.lg-success{display:none;padding:8px 0}
-.lg-success.show{display:block}
-.lg-success-icon{font-size:40px;margin-bottom:12px}
-.lg-success-title{font-family:var(--serif);font-size:22px;color:var(--white);margin-bottom:8px;font-style:italic}
-.lg-success-sub{font-size:13px;color:var(--gray);line-height:1.65}
-
-/* Wizard footer */
 .wiz-foot{padding:18px 40px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:16px}
 .btn-wback{background:transparent;border:1px solid rgba(255,255,255,.1);color:var(--gray);border-radius:8px;padding:11px 18px;font-size:13px;cursor:pointer;font-family:var(--sans);transition:all .2s}
 .btn-wback:hover{border-color:rgba(255,255,255,.2);color:var(--white)}
 .btn-wnext{background:linear-gradient(135deg,var(--gold),#A8761A);color:var(--navy);border:none;border-radius:8px;padding:11px 26px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--sans);transition:all .2s;display:flex;align-items:center;gap:8px}
 .btn-wnext:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,146,42,.35)}
 .btn-wnext:disabled{opacity:.3;cursor:not-allowed;transform:none;box-shadow:none}
-
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .two-mode,.report-preview.active,.guida-grid{grid-template-columns:1fr}
-  .bandi-grid,.pricing-grid{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  .g2,.g3{grid-template-columns:1fr}
-}
-@media(max-width:768px){
-  nav,nav.scrolled{padding:16px 24px}
-  .nav-links .nav-link{display:none}
-  .hero{padding:100px 24px 64px}
-  .waitlist-box{padding:28px 24px}
-  .form-row,.cta-form,.lg-form{flex-direction:column}
-  .stats-strip{padding:24px}
-  .stats-inner{grid-template-columns:repeat(2,1fr)}
-  .section,.faq-section,.pricing-section,.cta-section,.bandi-section,.report-section,.guida-section{padding:64px 24px}
-  footer{padding:28px 24px;flex-direction:column;align-items:flex-start}
   .wiz-body{padding:24px 20px}
   .wiz-foot{padding:14px 20px}
-  .hero-cta-group{flex-direction:column;align-items:center}
-}
-
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -370,7 +278,38 @@ src="https://www.facebook.com/tr?id=692317152616584&ev=PageView&noscript=1"
     <div style="background:linear-gradient(135deg,rgba(201,146,42,.1),rgba(201,146,42,.04));border:1px solid rgba(201,146,42,.22);border-radius:14px;padding:24px 32px;margin:0 0 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
       <div>
         <div style="font-family:'DM Mono',monospace;font-size:11px;color:#E8B44A;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Analisi gratuita</div>
-        
+        <div style="font-size:16px;font-weight:600;color:#FAFAF7;margin-bottom:4px">Hai diritto a questi fondi?</div>
+        <div style="font-size:13px;color:#8A9AAF">Scopri subito quali incentivi puoi richiedere — 5 domande, 3 minuti.</div>
+      </div>
+      <button onclick="openWizard()" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#C9922A,#A8761A);color:#0E1B3D;border:none;border-radius:8px;padding:13px 22px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap">Scopri adesso →</button>
+    </div>
+    <div class="article-content">
+
+      <p>La Nuova Sabatini è il bando più utilizzato dalle piccole e medie imprese italiane. Dal 2014 a oggi ha finanziato oltre 200.000 operazioni per un totale di investimenti superiore a €30 miliardi. Eppure molte PMI non la conoscono, o la conoscono ma non sanno se possono accedervi.</p>
+      <p>Questa guida risponde a tutto: cos'è, chi può richiedere, quanto si ottiene, come presentare la domanda e quali errori evitare.</p>
+
+      <h2 id="cos-e">Cos'è la Nuova Sabatini</h2>
+      <p>La Nuova Sabatini è un incentivo del Ministero delle Imprese e del Made in Italy (MiMIT) che agevola l'acquisto o il leasing di macchinari, attrezzature, impianti, beni strumentali e hardware/software da parte delle PMI.</p>
+      <p>Funziona così: la tua impresa ottiene un finanziamento bancario a condizioni di mercato, e lo Stato ti rimborsa una parte degli interessi su quel finanziamento. In pratica paghi meno interessi di quanto pagheresti normalmente.</p>
+      <p>Esistono tre versioni del contributo:</p>
+      <ul>
+        <li><strong>Ordinaria</strong>: contributo in conto interessi del 2,75% annuo</li>
+        <li><strong>Beni 4.0</strong> (Industria 4.0/Transizione 4.0): contributo del 3,575% annuo — 30% in più rispetto all'ordinaria</li>
+        <li><strong>Sud</strong>: contributo del 3,575% annuo per investimenti nelle regioni del Mezzogiorno</li>
+      </ul>
+
+      <h2 id="chi-puo">Chi può accedere alla Nuova Sabatini</h2>
+      <h3>Requisiti dell'impresa</h3>
+      <p>Possono accedere tutte le <strong>piccole e medie imprese</strong> italiane, ovvero imprese con:</p>
+      <ul>
+        <li>Meno di 250 dipendenti</li>
+        <li>Fatturato annuo non superiore a €50 milioni, oppure totale di bilancio non superiore a €43 milioni</li>
+      </ul>
+      <p>Non esistono limitazioni settoriali: possono accedere imprese manifatturiere, commerciali, di servizi, artigiane, agricole (con alcune specifiche).</p>
+      <div class="callout callout-warning">
+        <strong class="callout-label">Attenzione — Imprese escluse</strong>
+        Sono escluse le imprese in difficoltà finanziaria ai sensi della normativa UE, con procedure concorsuali in corso (fallimento, liquidazione coatta ecc.), o che hanno ricevuto e non rimborsato aiuti di Stato dichiarati incompatibili.
+      </div>
 
       <h3>Requisiti dell'investimento</h3>
       <p>Il finanziamento deve essere destinato all'acquisto (o leasing) di macchinari e impianti produttivi, attrezzature nuove di fabbrica, hardware e software (inclusi gestionali, CRM, sistemi ERP) e beni strumentali correlati all'attività d'impresa.</p>
@@ -611,8 +550,6 @@ async function subscribeInline(pos) {
 
 
 
-
-
 <div id="wizOverlay">
   <div class="wiz-backdrop" onclick="closeWizard()"></div>
   <div class="wizard">
@@ -727,6 +664,7 @@ async function subscribeInline(pos) {
   </div>
 </div>
 <script>
+
 // ── STATE ──
 const wp = { settore:null, area:null, dipendenti:null, anni:null, obiettivi:[] };
 let wCur = 1;
@@ -1064,6 +1002,7 @@ async function subscribeEmail(email, source) {
     console.error('Subscribe error:', e);
   }
 }
+
 </script>
 </body>
 </html>
